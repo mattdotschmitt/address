@@ -486,13 +486,25 @@
 
     /* Print Styles */
     @media print {
-      #lockScreen, #app, #entryModal, #cardModal, #categoryModal, #statusMessage {
+      html, body {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      #lockScreen, #app, #entryModal, #cardModal, #categoryModal, #statusMessage, .modal-overlay {
         display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
       }
       #printArea {
         display: block !important;
         position: static;
         width: 100%;
+        height: auto !important;
       }
       .print-table {
         width: 100%;
