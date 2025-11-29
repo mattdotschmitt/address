@@ -486,16 +486,12 @@
 
     /* Print Styles */
     @media print {
-      body * {
-        visibility: hidden;
-      }
-      #printArea, #printArea * {
-        visibility: visible;
+      #lockScreen, #app, #entryModal, #cardModal, #categoryModal, #statusMessage {
+        display: none !important;
       }
       #printArea {
-        position: absolute;
-        left: 0;
-        top: 0;
+        display: block !important;
+        position: static;
         width: 100%;
       }
       .print-table {
