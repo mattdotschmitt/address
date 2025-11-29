@@ -136,12 +136,20 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .header-top h1 {
       font-family: 'Libre Baskerville', Georgia, serif;
       font-size: 1.5rem;
       font-weight: 400;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
     }
 
     .entry-count {
@@ -156,6 +164,7 @@
     .header-actions {
       display: flex;
       gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -230,6 +239,66 @@
       margin: 0 auto;
     }
 
+    /* Alert banner */
+    .alert-banner {
+      background: rgba(199, 93, 74, 0.1);
+      border: 1px solid var(--coral);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .alert-banner p {
+      color: var(--coral);
+      font-size: 0.9rem;
+    }
+
+    .alert-banner .btn {
+      flex-shrink: 0;
+    }
+
+    /* Recently Viewed */
+    .recently-viewed {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--warm-white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .recently-viewed h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .recent-chips {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .recent-chip {
+      padding: 0.4rem 0.75rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .recent-chip:hover {
+      border-color: var(--gold);
+      background: var(--warm-white);
+    }
+
     .entries-list {
       display: flex;
       flex-direction: column;
@@ -248,11 +317,17 @@
       box-shadow: 0 4px 16px var(--shadow);
     }
 
+    .entry-card.not-in-print {
+      opacity: 0.7;
+      border-left: 3px solid var(--border);
+    }
+
     .entry-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 0.75rem;
+      gap: 0.5rem;
     }
 
     .entry-names {
@@ -260,6 +335,12 @@
       font-size: 1.1rem;
       font-weight: 400;
       color: var(--ink);
+    }
+
+    .entry-badges {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
     .entry-category {
@@ -278,6 +359,19 @@
       color: var(--ink-light);
       margin-bottom: 0.75rem;
       font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 0.75rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .entry-address:hover {
+      background: var(--cream);
+    }
+
+    .entry-address:active {
+      background: var(--border);
     }
 
     .entry-meta {
@@ -293,12 +387,19 @@
       font-weight: 500;
     }
 
+    .entry-updated {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      opacity: 0.7;
+    }
+
     .entry-actions {
       display: flex;
       gap: 0.5rem;
       margin-top: 1rem;
       padding-top: 1rem;
       border-top: 1px solid var(--border);
+      flex-wrap: wrap;
     }
 
     .entry-actions .btn {
@@ -306,16 +407,37 @@
       padding: 0.4rem 0.75rem;
     }
 
-    .card-log-indicator {
+    .card-indicator {
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
-      background: var(--sage);
-      color: white;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 500;
+    }
+
+    .card-indicator.sent {
+      background: var(--sage);
+      color: white;
+    }
+
+    .card-indicator.received {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .card-indicator.none {
+      background: var(--cream);
+      color: var(--ink-light);
+    }
+
+    .no-print-badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      background: var(--border);
+      color: var(--ink-light);
+      border-radius: 4px;
     }
 
     /* Modal */
@@ -413,6 +535,24 @@
       background: var(--warm-white);
     }
 
+    .form-group-inline {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .form-group-inline input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--gold);
+      transform: scale(1.2);
+    }
+
+    .form-group-inline label {
+      margin-bottom: 0;
+      text-transform: none;
+      font-weight: 500;
+    }
+
     .modal-footer {
       padding: 1rem 1.5rem;
       border-top: 1px solid var(--border);
@@ -421,40 +561,63 @@
       justify-content: flex-end;
     }
 
-    .card-log-list {
+    /* Card History Section */
+    .card-history-section {
       margin-top: 1rem;
       padding: 1rem;
       background: var(--cream);
       border-radius: 8px;
     }
 
-    .card-log-item {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
+    .card-history-section h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--ink-light);
+      margin-bottom: 0.75rem;
     }
 
-    .card-log-item:last-child {
+    .card-year-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-year-row:last-child {
       border-bottom: none;
     }
 
-    .card-log-date {
-      font-weight: 500;
-      color: var(--ink);
+    .card-year-label {
+      font-weight: 600;
+      min-width: 50px;
     }
 
-    .card-log-note {
-      color: var(--ink-light);
-      font-style: italic;
-    }
-
-    .new-category-wrapper {
+    .card-year-toggles {
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
+      flex: 1;
     }
 
-    .new-category-wrapper input {
+    .card-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .card-toggle input {
+      accent-color: var(--sage);
+    }
+
+    .card-note-input {
       flex: 1;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
     }
 
     .status-message {
@@ -576,6 +739,17 @@
       .entry-actions {
         flex-wrap: wrap;
       }
+
+      .alert-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .card-year-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -600,7 +774,9 @@
     <header>
       <div class="header-top">
         <h1>Address Book</h1>
-        <span class="entry-count"><span id="entryCount">0</span> entries</span>
+        <div class="header-stats">
+          <span class="entry-count"><span id="entryCount">0</span> entries</span>
+        </div>
       </div>
       <div class="header-actions">
         <button class="btn btn-primary" onclick="openAddModal()">+ Add Entry</button>
@@ -618,6 +794,16 @@
     </header>
 
     <main>
+      <div id="exportAlert" class="alert-banner" style="display: none;">
+        <p>⚠️ It's been a while since you backed up. Consider exporting a CSV.</p>
+        <button class="btn" onclick="exportCSV()">Export Now</button>
+      </div>
+
+      <div id="recentlyViewed" class="recently-viewed" style="display: none;">
+        <h3>Recently Viewed</h3>
+        <div id="recentChips" class="recent-chips"></div>
+      </div>
+
       <div id="entriesList" class="entries-list"></div>
     </main>
   </div>
@@ -651,9 +837,13 @@
           <label>Notes</label>
           <input type="text" id="entryNotes" placeholder="Quick reference notes">
         </div>
-        <div id="cardLogSection" style="display: none;">
-          <label style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-light);">Card Log</label>
-          <div id="cardLogList" class="card-log-list"></div>
+        <div class="form-group form-group-inline">
+          <input type="checkbox" id="entryIncludeInPrint" checked>
+          <label for="entryIncludeInPrint">Include in holiday card print list</label>
+        </div>
+        <div id="cardHistorySection" class="card-history-section" style="display: none;">
+          <h4>Card History</h4>
+          <div id="cardHistoryRows"></div>
         </div>
       </div>
       <div class="modal-footer">
@@ -664,16 +854,24 @@
     </div>
   </div>
 
-  <!-- Card Received Modal -->
+  <!-- Card Year Modal (for quick logging) -->
   <div class="modal-overlay" id="cardModal">
     <div class="modal">
       <div class="modal-header">
-        <h2>Log Card Received</h2>
+        <h2>Log Card for <span id="currentYear"></span></h2>
         <button class="modal-close" onclick="closeModal('cardModal')">&times;</button>
       </div>
       <div class="modal-body">
         <input type="hidden" id="cardEntryId">
         <p id="cardEntryName" style="font-family: 'Libre Baskerville', serif; margin-bottom: 1rem;"></p>
+        <div class="form-group form-group-inline">
+          <input type="checkbox" id="cardSent">
+          <label for="cardSent">Card Sent</label>
+        </div>
+        <div class="form-group form-group-inline">
+          <input type="checkbox" id="cardReceived">
+          <label for="cardReceived">Card Received</label>
+        </div>
         <div class="form-group">
           <label>Note (optional)</label>
           <input type="text" id="cardNote" placeholder="e.g., 'Photo card with dog'">
@@ -681,7 +879,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn" onclick="closeModal('cardModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="logCardReceived()">Log Received</button>
+        <button class="btn btn-primary" onclick="saveCardLog()">Save</button>
       </div>
     </div>
   </div>
@@ -714,7 +912,7 @@
 
   <script>
     // ============================================
-    // CONFIG - Update these after setting up JSONBin
+    // CONFIG
     // ============================================
     const CONFIG = {
       JSONBIN_ID: '692b098cae596e708f789f19',
@@ -748,7 +946,6 @@
         key,
         enc.encode(JSON.stringify(data))
       );
-      // Combine salt + iv + ciphertext
       const combined = new Uint8Array(salt.length + iv.length + encrypted.byteLength);
       combined.set(salt, 0);
       combined.set(iv, salt.length);
@@ -775,7 +972,6 @@
     // ============================================
     async function saveToCloud(encryptedData) {
       if (CONFIG.JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
-        // Fallback to localStorage if JSONBin not configured
         localStorage.setItem('addressBook_encrypted', encryptedData);
         return;
       }
@@ -817,12 +1013,16 @@
     // ============================================
     // APP STATE
     // ============================================
-    let appData = { entries: [], categories: [] };
+    let appData = { entries: [], categories: [], lastExport: null };
     let currentPassword = null;
     let isNewSetup = false;
+    let recentlyViewed = JSON.parse(localStorage.getItem('addressBook_recent') || '[]');
 
-    // Initial data (will be used for first-time setup)
-    const INITIAL_DATA = {"entries": [{"id": 1, "type": "Blake", "names": "Bass Family (Sharon, David, Carly)", "address": "Bass Family\n5208 Ridge Road\nEdina, MN 55436", "issues": "", "notes": "Bass", "cardLog": []}, {"id": 2, "type": "Blake", "names": "Emma Goodman & fam", "address": "The Goodman Family\n4625 DuPont Ave S\nMinneapolis, MN 55419", "issues": "", "notes": "Goodman", "cardLog": []}, {"id": 3, "type": "Blake", "names": "Amir Kats", "address": "Mr. Kats\nBlake Campus\n110 Blake Road S\nHopkins, MN 55343", "issues": "", "notes": "Kats", "cardLog": []}, {"id": 4, "type": "Blake", "names": "Kojasoy Family - Shannon, Tumay, Sabiha, Kaya", "address": "Kojasoy Family\n1518 W 22nd St\nMinneapolis, MN 55405", "issues": "", "notes": "Kojasoy", "cardLog": []}, {"id": 5, "type": "Blake", "names": "Renee, Rob, Landon, Zander Maul", "address": "Maul Family\n4206 Zenith Ave S\nMinneapolis, MN 55410", "issues": "", "notes": "Maul", "cardLog": []}, {"id": 6, "type": "Boston", "names": "Hannah, Topher, Gracie, Sean, Sloane Brennan", "address": "Brennan Family\n1 Ocean Meadow Lane\nMarblehead, MA 01945", "issues": "", "notes": "Brennan", "cardLog": []}, {"id": 7, "type": "Boston", "names": "Dr. Dobberteen (Lisa)", "address": "Lisa Dobberteen, MD\n139 Cushing St. #3\nCambridge, MA 02138", "issues": "", "notes": "Dobberteen", "cardLog": []}, {"id": 8, "type": "Boston", "names": "Melissa, Ben, Will Jack Eastwood", "address": "Eastwood Family\n17 Oakland Street\nLexington, MA 02420", "issues": "", "notes": "Eastwood", "cardLog": []}, {"id": 9, "type": "Boston", "names": "Kate, Carl, Brooklyn, Ryleigh Graham", "address": "Graham Ditkoff Family\n39 Fellows Rd\nIpswich, MA 01938", "issues": "", "notes": "Graham", "cardLog": []}, {"id": 10, "type": "Boston", "names": "Paul & Nona Maker", "address": "Paul & Nona Maker\n110 Laurie Lane\nWrentham, MA 02093", "issues": "", "notes": "Maker", "cardLog": []}, {"id": 11, "type": "Boston", "names": "Pat, Chrissy, Claire, Brendan McMahon", "address": "McMahon Family\n22 Cottage Street\nWellesley, MA 02482", "issues": "", "notes": "McMahon", "cardLog": []}, {"id": 12, "type": "Cargill", "names": "Josh Bovee", "address": "Bovee Family\n1249 Interlaken Parkway North\nWaconia, MN 55387", "issues": "", "notes": "Bovee", "cardLog": []}, {"id": 13, "type": "Cargill", "names": "Sara Isbell & Bill Cunningham & Sam", "address": "The Cunningham Family\n7454 Bent Bow Trail\nChanhassen, MN 55317", "issues": "", "notes": "Isbell", "cardLog": []}, {"id": 14, "type": "Cargill", "names": "Justin Kershaw", "address": "Kershaw Family\n2355 East Medicine Lake Boulevard\nMinneapolis, MN 55441", "issues": "", "notes": "Kershaw", "cardLog": []}, {"id": 15, "type": "Cargill", "names": "Nathan & Melissa Miller", "address": "The Millers\n101 16th Ave N\nHopkins, MN 55343", "issues": "", "notes": "Miller", "cardLog": []}, {"id": 16, "type": "Cargill", "names": "Garrick Van Buren", "address": "Van Buren Family\n3433 Skycroft Circle\nMinneapolis, MN 55418", "issues": "", "notes": "Van Buren", "cardLog": []}, {"id": 17, "type": "Cargill", "names": "Jason & Treva Vogt", "address": "Vogt Family\n6229 Parkwood Rd\nEdina, MN 55436", "issues": "", "notes": "Vogt", "cardLog": []}, {"id": 18, "type": "Cargill", "names": "James Weed", "address": "Weed Family\n9055 County Road 11\nMaple Plain, MN 55359", "issues": "", "notes": "Weed", "cardLog": []}, {"id": 19, "type": "EnerNOC", "names": "Erica Morgenstein & Alanna Boyd \u2014 Harper, Rowan, Will", "address": "Boygenstein Family\n192 Caleb St\nPortland, ME 04102", "issues": "", "notes": "Boygenstein", "cardLog": []}, {"id": 20, "type": "EnerNOC", "names": "Mike, Erin, James, Ryan Desmarais", "address": "Desmarais Family\n205 Dorset Lane\nMadison, CT 06443", "issues": "", "notes": "Desmarais", "cardLog": []}, {"id": 21, "type": "EnerNOC", "names": "Don & Lorrie Jenkins", "address": "Don & Lorrie Jenkins\n23 Fletcher St\nFoxboro, MA 02035-2767", "issues": "", "notes": "Jenkins", "cardLog": []}, {"id": 22, "type": "EnerNOC", "names": "Brent Sisson", "address": "Brent Sisson\n100 Rollins Road\nMillbrae, CA 94030", "issues": "", "notes": "Sisson", "cardLog": []}, {"id": 23, "type": "Friends", "names": "Boleens", "address": "Boleen Family\n4801 11th Ave S\nMinneapolis, MN 55417", "issues": "", "notes": "Boleen", "cardLog": []}, {"id": 24, "type": "Friends", "names": "Matt Horstman & Emily Langerak", "address": "Horsrak\n2539 37th Ave S\nMinneapolis, MN 55406", "issues": "", "notes": "Horsrak", "cardLog": []}, {"id": 25, "type": "Friends", "names": "Matt, Angela, Mark, Jane Schneider", "address": "Schneider Family\n978 Barrett St\nSt Paul, MN 55103", "issues": "", "notes": "Schneider", "cardLog": []}, {"id": 26, "type": "Friends", "names": "Ryan and Natalie Scholz and Theo", "address": "Scholz Family\n2423 Irving Avenue South\nMinneapolis, MN 55405", "issues": "", "notes": "Scholz", "cardLog": []}, {"id": 27, "type": "Friends", "names": "Tina, Jeff, Pearl, Rose Yager", "address": "The Yagers\n1801 Asbury Street\nFalcon Heights, MN 55113", "issues": "", "notes": "Yager", "cardLog": []}, {"id": 28, "type": "Germany", "names": "James Correa", "address": "James Correa\n1631 North Maple Street\nBurbank, CA 91505", "issues": "", "notes": "Correa", "cardLog": []}, {"id": 29, "type": "Germany", "names": "Elizabeth Culatta & Cutter Tomlin & Ethan", "address": "Culatta Tomlin Family\n609 Canterbury Drive \nAugusta, GA 30909", "issues": "", "notes": "Culatta", "cardLog": []}, {"id": 30, "type": "Greta Family", "names": "Bebop", "address": "Bebop\n35465 Lessnau Lane\nClinton, MT 59825", "issues": "", "notes": "Bebop", "cardLog": []}, {"id": 31, "type": "Greta Family", "names": "Jane Ellwood", "address": "Jane Ellwood \n534 Spruce Drive\nHudson, WI 54016", "issues": "", "notes": "Ellwood", "cardLog": []}, {"id": 32, "type": "Greta Family", "names": "Susan Greer & Benjamin Guardado", "address": "Greer & Guardado\n4250 Boulder Ridge Pt\nEagan, MN 55122", "issues": "", "notes": "Greer", "cardLog": []}, {"id": 33, "type": "Greta Family", "names": "Jim & Mary (James \u2014 MN)", "address": "Hofmann & McKenna\n14284 Fruit Farm Road\nSaint Joseph, MN 56374", "issues": "", "notes": "Hofmann", "cardLog": []}, {"id": 34, "type": "Greta Family", "names": "Sarah Turk-Hofmann & Walker Hofmann", "address": "Hofmann Family\n8941 Purple Lilac Circle\nLorton, VA 22079", "issues": "", "notes": "Hofmann", "cardLog": []}, {"id": 35, "type": "Greta Family", "names": "Owen, Megan, Elam, Sylvan, Omri Hofmann", "address": "Hofmann Family\nE14041 County Road D\nLa Farge, WI 54639", "issues": "", "notes": "Hofmann", "cardLog": []}, {"id": 36, "type": "Greta Family", "names": "Maureen Hougo", "address": "Maureen Hougo\n260 S. Osceola, Apt. #408\nSt. Paul, MN 55102", "issues": "", "notes": "Hougo", "cardLog": []}, {"id": 37, "type": "Greta Family", "names": "Jimmy Kroska & Angie Reiff", "address": "Kroska & Reiff\n8516 196th St SW #217\nEdmonds, WA 98026", "issues": "", "notes": "Kroska", "cardLog": []}, {"id": 38, "type": "Greta Family", "names": "Kathleen Kroska & Hugh Hofmann", "address": "Kroska / Hofmann\n416 Willow St\nViroqua, WI 54665", "issues": "", "notes": "Kroska", "cardLog": []}, {"id": 39, "type": "Greta Family", "names": "Paul Kroska & Keran Flynn-Kroska", "address": "The Kroskas\n4000 Mud Creek Rd\nEly, MN 55731", "issues": "", "notes": "Kroska", "cardLog": []}, {"id": 40, "type": "Greta Family", "names": "Mary, Addie, Emma, Josh Larson", "address": "Larson Family\n2170 Wolf Creek Pass\nEly, MN 55731", "issues": "", "notes": "Larson", "cardLog": []}, {"id": 41, "type": "Greta Family", "names": "Julie & Jim Tussing", "address": "The Tussings\n13931 Drommond Trl\nApple Valley, MN 55124-9205", "issues": "", "notes": "Tussing", "cardLog": []}, {"id": 42, "type": "Greta Friends", "names": "Andrew Aarlt & Ethan Mooar", "address": "Aarlt-Mooar Family\n2237 Berland Place\nSt Paul, MN 55119", "issues": "", "notes": "Aarlt", "cardLog": []}, {"id": 43, "type": "Greta Friends", "names": "Nikki & Grayson", "address": "Nikki & Grayson\n3500 Girard Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "Bottol", "cardLog": []}, {"id": 44, "type": "Greta Friends", "names": "Becky, Michael, Oliver Braxton", "address": "The Braxton Family\n2020 Viola Rd. NE\nRochester, MN 55906", "issues": "", "notes": "Braxton", "cardLog": []}, {"id": 45, "type": "Greta Friends", "names": "Peter & Leah Elsham", "address": "Elsham Family\n3818 Waveland Terrace\nMinneapolis, MN 55410", "issues": "", "notes": "Elsham", "cardLog": []}, {"id": 46, "type": "Greta Friends", "names": "Marjorie & Erik Hegstrom", "address": "Hegstrom Family\n2160 Nelson Road\nDelano, MN 55328", "issues": "", "notes": "Hegstrom", "cardLog": []}, {"id": 47, "type": "Greta Friends", "names": "Taryn Holly & Thomas Atkinson & Jack Atkinson", "address": "Taryn Holly & Thomas Atkinson\n56 Roswell Avenue\nStaten Island, NY 10314", "issues": "", "notes": "Holly", "cardLog": []}, {"id": 48, "type": "Greta Friends", "names": "Corey, Zeb, Rebel, General Nicholson", "address": "Nicholson Family\n1741 NE 57th Ave\nPortland, OR 97213", "issues": "", "notes": "Nicholson", "cardLog": []}, {"id": 49, "type": "Greta Friends", "names": "Sadie Rubin & Leo Laub", "address": "Sadie & Leo\n2324 Girard Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Rubin", "cardLog": []}, {"id": 50, "type": "Greta Friends", "names": "Liz Scherer & Nels Dyste", "address": "Scherer Dyste Family\n4428 Aldrich Avenue South\nMinneapolis, MN 55419", "issues": "", "notes": "Scherer", "cardLog": []}, {"id": 51, "type": "Greta Friends", "names": "Michelle Weber & Brandon Carlson", "address": "Weber Carlson Family\n9938 108th Pl N\nMaple Grove, MN 55369", "issues": "", "notes": "Weber", "cardLog": []}, {"id": 52, "type": "Greta Friends", "names": "Val, Dave Weigal", "address": "The Weigals\n18932 Meadow Creek Drive\nMokena, IL 60448", "issues": "", "notes": "Weigals", "cardLog": []}, {"id": 53, "type": "Greta High School", "names": "Kavitha Bhagat & Family", "address": "Bhagat Family\n3927 W Meadow Lane\nOrange, OH 44122", "issues": "", "notes": "Bhagat", "cardLog": []}, {"id": 54, "type": "Greta High School", "names": "Leslie Gully & Family", "address": "Gully Family\n1421 Chadwick Dr\nNormal, IL 61761", "issues": "", "notes": "Gully", "cardLog": []}, {"id": 55, "type": "Greta High School", "names": "Sarvis Family", "address": "Sarvis Family\n965 Kansas Ave SE\nHuron, SD 57350", "issues": "", "notes": "Sarvis", "cardLog": []}, {"id": 56, "type": "Greta History", "names": "Jean, Terry Beck", "address": "The Becks\nS 3368A Haugrud Ridge Rd\nLa Farge, WI 54639", "issues": "", "notes": "Becks", "cardLog": []}, {"id": 57, "type": "Greta History", "names": "Kathy & Mike Deacon-Weber", "address": "Deacon-Weber Family\n4136 Reiland Lane\nShoreview, MN 55126", "issues": "", "notes": "Daacon Weber", "cardLog": []}, {"id": 58, "type": "Greta History", "names": "Victoria, Paul, Greyson, Keegan Georgoff", "address": "Georgoff Family\n16980 Oval Rum Drive\nWimauma, FL 33598", "issues": "", "notes": "Georgoff", "cardLog": []}, {"id": 59, "type": "Greta History", "names": "Jan Jensen", "address": "Jan Jensen\n44487 367th Ave.\nSt Peter, MN 56082", "issues": "", "notes": "Jensen", "cardLog": []}, {"id": 60, "type": "Greta History", "names": "Lara, Mark Matuszewski", "address": "Matuszewski Family\n10198 Wateridge Circle\nUnit 156\nSan Diego, CA 92121", "issues": "", "notes": "Matuszewski", "cardLog": []}, {"id": 61, "type": "Hand deliver", "names": "Bruce & Anne Bouta", "address": "Bouta Family\n2030 Queen Avenue South\nMinneapolis, MN 55405", "issues": "", "notes": "Bouta", "cardLog": []}, {"id": 62, "type": "Hand deliver", "names": "Mei-Ling, Matt, Pruitt, Lewis Smith", "address": "Smith Family\n2005 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Dayton", "cardLog": []}, {"id": 63, "type": "Hand deliver", "names": "Susan Ferrell", "address": "Kenwood Elementary School\nAttn: Susan Ferrell\n2013 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Ferrell", "cardLog": []}, {"id": 64, "type": "Hand deliver", "names": "Friedmans", "address": "Friedman Family\n2417 W 21st St\nMinneapolis, MN 55405", "issues": "", "notes": "Friedmans", "cardLog": []}, {"id": 65, "type": "Hand deliver", "names": "Ms Gregory", "address": "Ms Gregory\n5533 12th Ave S\nMinneapolis, MN 55417", "issues": "", "notes": "Gregory", "cardLog": []}, {"id": 66, "type": "Hand deliver", "names": "Hoegs", "address": "The Hoegs\n2029 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Hoegs", "cardLog": []}, {"id": 67, "type": "Hand deliver", "names": "Maggie piano", "address": "Maggie Hood", "issues": "Need address", "notes": "Hood", "cardLog": []}, {"id": 68, "type": "Hand deliver", "names": "Jeffcoats", "address": "Jeffcoat Family", "issues": "", "notes": "Jeffcoat", "cardLog": []}, {"id": 69, "type": "Hand deliver", "names": "Susan Kettering", "address": "Susan Kettering\n2018 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Kettering", "cardLog": []}, {"id": 70, "type": "Hand deliver", "names": "Krihas", "address": "Kriha Family\n2024 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Kriha", "cardLog": []}, {"id": 71, "type": "Hand deliver", "names": "Megan and Chris Lawrence-McGrann", "address": "Lawrence McGrann Family\n2012 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Lawrence McGrann", "cardLog": []}, {"id": 72, "type": "Hand deliver", "names": "Ali & Justin & Thea & Max Lerman", "address": "Lerman Family\n2003 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Lerman", "cardLog": []}, {"id": 73, "type": "Hand deliver", "names": "Lucas Family", "address": "Lucas Family\n1977 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Lucas", "cardLog": []}, {"id": 74, "type": "Hand deliver", "names": "Brian Palmer & Kevin Madden", "address": "Brian & Kevin\n2006 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Madden", "cardLog": []}, {"id": 75, "type": "Hand deliver", "names": "Robin & Steve Manthie", "address": "Manthie Family\n2016 Kenwood Parkway\nMinneapolis, MN 55405", "issues": "", "notes": "Manthie", "cardLog": []}, {"id": 76, "type": "Hand deliver", "names": "Meg Montgomery and Dan Miller, Rory, Monty, Frances", "address": "Montgomery & Miller Family\n1973 Queen Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Montgomery", "cardLog": []}, {"id": 77, "type": "Hand deliver", "names": "Dee &  Robert Morrison", "address": "Morrison Family\n2015 Queen Avenue South\nMinneapolis, MN 55405", "issues": "", "notes": "Morrison", "cardLog": []}, {"id": 78, "type": "Hand deliver", "names": "Martha Suedbeck", "address": "Kenwood Elementary School\nAttn: Martha Suedbeck\n2013 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Suedbeck", "cardLog": []}, {"id": 79, "type": "Hand deliver", "names": "Ms Sullivan", "address": "Sullivan & Gavin\n5051 Nokomis Avenue\nMinneapolis, MN 55417", "issues": "", "notes": "Sullivan", "cardLog": []}, {"id": 80, "type": "Hand deliver", "names": "Ms Tostenson, Haley", "address": "Kenwood Elementary School\nAttn: Ms. Tostenson\n2013 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Tostenson", "cardLog": []}, {"id": 81, "type": "Hand deliver", "names": "Jim Diracles & Debi Weldele", "address": "Weldele & Diracles\n1985 Queen Avenue S\nMinneapolis, MN 55405", "issues": "", "notes": "Weldele", "cardLog": []}, {"id": 82, "type": "Hand deliver", "names": "Katy & Jon", "address": "Gehrig Phelan Family\n2231 W 21st St\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 83, "type": "Hand deliver", "names": "Heidi Johnson", "address": "Kenwood Elementary School\nAttn: Heidi Johnson\n2013 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 84, "type": "Hand deliver", "names": "Ms Natalie", "address": "Kenwood Elementary School\nAttn: Natalie Peterson\n2013 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 85, "type": "Hand deliver", "names": "Kris Prince", "address": "Kris Prince\n2547 Emerson Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 86, "type": "International", "names": "Holger Buetschle & Frank Oerther", "address": "Frank Oerther & Holger Buetschle\nHauptstra\u00dfe 58\n67271 Obers\u00fclzen\nGermany", "issues": "", "notes": "Buetschle", "cardLog": []}, {"id": 87, "type": "International", "names": "Alexis Cazin", "address": "Alexis Cazin\n7 b Avenue de Miremont\n1206 Gen\u010dve\nSuisse", "issues": "", "notes": "Cazin", "cardLog": []}, {"id": 88, "type": "International", "names": "Yannis", "address": "Yannis Krontiris\nPaul-Heyse-Str. 31C\n80336 Munich, DE", "issues": "", "notes": "Krontiris", "cardLog": []}, {"id": 89, "type": "International", "names": "Carolina Saglio", "address": "Carolina Saglio\nAv Salvador Maria de Carril 4173-4\n1419 Ciudad Autonoma de Buenos Aires\nArgentina", "issues": "", "notes": "Saglio", "cardLog": []}, {"id": 90, "type": "International", "names": "Carly Brandelius Schmitt, Sven Bjoern Brandelius, Bjorn", "address": "Brandelius Family\nAm Dr\u00fcerberg 18\n59872 Meschede\nGermany", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 91, "type": "International", "names": "Jonathan, Ryanne, Trey Shafer", "address": "Shafer Family\nBP 6385\nKigali, Rwanda", "issues": "", "notes": "Shafer", "cardLog": []}, {"id": 92, "type": "International", "names": "Greer & Nick Shearer", "address": "Shearer Family\n12 Kentucky St\nEllerslie, Auckland\nNew Zealand, 1051", "issues": "", "notes": "Shearer", "cardLog": []}, {"id": 93, "type": "International", "names": "Jenny Smith", "address": "Jenny Smith\nSpelzenstr. 15\n68167, Mannheim\nGermany", "issues": "", "notes": "Smith", "cardLog": []}, {"id": 94, "type": "International", "names": "Kristine, Kai, Sophie, Amelie Solmitz", "address": "Familie Solmitz\nKantstrasse 8\n68165, Mannheim\nGermany", "issues": "", "notes": "Solmitz", "cardLog": []}, {"id": 95, "type": "Matt Family", "names": "Erica, Ben, June, Max, Ray Bauer", "address": "The Bauers\n14015 Crown Drive\nEden Prairie, MN 55346", "issues": "", "notes": "Bauer", "cardLog": []}, {"id": 96, "type": "Matt Family", "names": "Lois & Pat Bishop", "address": "The Bishops\n8740 E. Ridge Terrace Dr\nTucson, AZ 85710", "issues": "", "notes": "Bishop", "cardLog": []}, {"id": 97, "type": "Matt Family", "names": "Marie Dimock (Dick, Karla)", "address": "Dimock Family\n51 Patricia St\nFlorence, KY 41042", "issues": "", "notes": "Dimock", "cardLog": []}, {"id": 98, "type": "Matt Family", "names": "Butch Edevold & Jean", "address": "Butch & Jean\n36629 225th Ave\nBagley, MN 56621", "issues": "", "notes": "Edevold", "cardLog": []}, {"id": 99, "type": "Matt Family", "names": "Jurene Fremstad", "address": "Jurene Fremstad\n5825 Fremont Ave S\nMinneapolis, MN 55419", "issues": "", "notes": "Fremstad", "cardLog": []}, {"id": 100, "type": "Matt Family", "names": "Irene Lindgren", "address": "Irene Lindgren\n2170 128th Avenue NW\nCoon Rapids, MN  55433", "issues": "", "notes": "Lindgren", "cardLog": []}, {"id": 101, "type": "Matt Family", "names": "Susan & Kip Narber", "address": "Narber Family\n64720 Collins Rd\nBend, OR 97703", "issues": "", "notes": "Narber", "cardLog": []}, {"id": 102, "type": "Matt Family", "names": "Jane & John Reisch (Arizona -- winters)", "address": "The Reisches\n916 W Placita Quieta\nGreen Valley, AZ 85622", "issues": "", "notes": "Reisch", "cardLog": []}, {"id": 103, "type": "Matt Family", "names": "Liz Schmitt & Bob Correia", "address": "Liz Schmitt & Bob Correia\nP.O. Box 729\nKasilof, AK 99610", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 104, "type": "Matt Family", "names": "Peter Schmitt & Marais Bjornberg", "address": "Peter & Marais\n3223 McKinley St NE\nMinneapolis, MN 55418", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 105, "type": "Matt Family", "names": "Matt Schmitt & Deb Robinson", "address": "Schmitt & Robinson\n774 Timber Lane\nShoreview, MN 55126", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 106, "type": "Matt Family", "names": "Lou, Cheri, Ryan, Olivia Schmitt", "address": "Schmitt Family\nP.O.Box 7222\nBend, OR 97708", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 107, "type": "Matt Family", "names": "Grace Tangjerd-Schmitt & Tiger Schmitt", "address": "The Schmitts\n1172 Winthrop St S\nSt Paul, MN 55119", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 108, "type": "Matt Family", "names": "Bill & Liz Schmitt", "address": "The Schmitts\n17 Williams Woods Road\nMahtomedi, MN 55115", "issues": "", "notes": "Schmitt", "cardLog": []}, {"id": 109, "type": "Matt Family", "names": "Gretchen Stein & David Wettergreen", "address": "Stein & Wettergreen\n30 Deer Hill Drive\nNorth Oaks, MN 55127", "issues": "", "notes": "Stein", "cardLog": []}, {"id": 110, "type": "Matt Family", "names": "Lowel Tangjerd & Christie Teigland", "address": "Tangjerd & Teigland\n1043 Stonington Dr\nArnold, MD 21012", "issues": "", "notes": "Tangjerd", "cardLog": []}, {"id": 111, "type": "Matt Friends", "names": "Olga & Andrew Baker", "address": "The Bakers\n94 Marathon Street, Unit 1\nArlington, MA 02474", "issues": "", "notes": "Baker", "cardLog": []}, {"id": 112, "type": "Matt Friends", "names": "Craig Buerstatte", "address": "Buerstatte\n515 14th St. SE\nWashington DC, 20003", "issues": "", "notes": "Buerstatte", "cardLog": []}, {"id": 113, "type": "Matt Friends", "names": "Jermaine Clark & Sarah Pitzer", "address": "Pitzer - Clark\n7417 SW Pine St\nPortland, OR 97223", "issues": "", "notes": "Clark", "cardLog": []}, {"id": 114, "type": "Matt History", "names": "Ellen Benavides & Jennifer Ho", "address": "Benavides & Ho\n2349 Commonwealth Ave \nSt Paul, MN 55108-1603", "issues": "", "notes": "Benavides", "cardLog": []}, {"id": 115, "type": "Matt History", "names": "John Elwell & Maureen Peltier", "address": "Elwell & Peltier \n233 Congress St W\nSt Paul, MN 55107-2114", "issues": "", "notes": "Elwell", "cardLog": []}, {"id": 116, "type": "Matt History", "names": "Rebecca Schneider", "address": "Rebecca Schneider\n1709 Van Buren Ave\nSt Paul, MN 55104", "issues": "", "notes": "Schneider", "cardLog": []}, {"id": 117, "type": "Matt Work", "names": "Ryan & Melissa Clinton", "address": "Clinton Family\n450 Williamsburg Lane\nMemphis, TN 38117", "issues": "", "notes": "Clinton", "cardLog": []}, {"id": 118, "type": "Matt Work", "names": "Shawn Schottler -- tree farm", "address": "Dr Shawn Schottler\n458 Rice Lake Road\nSomerset, WI 54025", "issues": "", "notes": "Schottler", "cardLog": []}, {"id": 119, "type": "Neighbors", "names": "Jean Brooks", "address": "Jean Brooks\nc/o The Kenwood\n825 Summit Avenue\nMinneapolis, MN 55403", "issues": "", "notes": "Brooks", "cardLog": []}, {"id": 120, "type": "Neighbors", "names": "Delmonico, Christine and Jim", "address": "Delmonico Family\n1960 Sheridan Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Delmonico", "cardLog": []}, {"id": 121, "type": "Neighbors", "names": "Eric Johnson and Jill Fedje", "address": "Fedje & Johnson\n2024 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Johnson", "cardLog": []}, {"id": 122, "type": "Neighbors", "names": "Katherine & Scott Kovarik", "address": "Kovarik Family\n1916 Knox Ave S\nMinneapolis, MN 55403", "issues": "", "notes": "Kovarik", "cardLog": []}, {"id": 123, "type": "Neighbors", "names": "Cynthia & Brooks Martin", "address": "Martin Family\n1919 Mount Curve Ave\nMinneapolis, MN 55405", "issues": "", "notes": "Martin", "cardLog": []}, {"id": 124, "type": "Neighbors", "names": "Peggy and Ed", "address": "The Pluimers\n2020 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Pluimers", "cardLog": []}, {"id": 125, "type": "Neighbors", "names": "Jon & Marcee Schwartz", "address": "Schwartz Family\n2008 Kenwood Parkway\nMinneapolis, MN 55405", "issues": "", "notes": "Schwartz", "cardLog": []}, {"id": 126, "type": "Neighbors", "names": "Monica & Neil White", "address": "White Family\n1786 Irving Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "White", "cardLog": []}, {"id": 127, "type": "Neighbors", "names": "Courtney Kiernat", "address": "Kiernats\n2512 Upton Ave South\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 128, "type": "Neighbors", "names": "Erica Mitchell, Jonathan Williams, Clara", "address": "Mitchell Williams Family\n1987 Sheridan Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 129, "type": "Neighbors", "names": "Anton and Mary Plaisted", "address": "Plaisted Family\n2012 Sheridan Avenue S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 130, "type": "Other", "names": "Jordan Carlson", "address": "House of Music\nAttn: Jordan Carlson\n4948 Washburn Ave S\nMinneapolis, MN 55410", "issues": "", "notes": "Carlson", "cardLog": []}, {"id": 131, "type": "Other", "names": "Erik Wood", "address": "Wood Family\n5456 Fremont Ave S\nMinneapolis, MN 55419", "issues": "", "notes": "Wood", "cardLog": []}, {"id": 132, "type": "Other", "names": "Sam, Therapist", "address": "", "issues": "", "notes": "", "cardLog": []}, {"id": 133, "type": "School", "names": "Marstal & David Aamodt", "address": "The Aamodt Family\n1805 Emerson Ave S\nMinneapolis, MN 55403", "issues": "", "notes": "Aamodt", "cardLog": []}, {"id": 134, "type": "School", "names": "Advisory", "address": "Blake Campus\n110 Blake Road S\nHopkins, MN 55343", "issues": "", "notes": "Advisory", "cardLog": []}, {"id": 135, "type": "School", "names": "Molly, Devon Alexander", "address": "Alexander Family\n209 Ottawa Ave S\nMinneapolis, MN 55416", "issues": "", "notes": "Alexander", "cardLog": []}, {"id": 136, "type": "School", "names": "Hellen & Craig & Logan Bassett", "address": "Bassett Family\n5540 Cumberland Rd\nMinneapolis, MN 55410", "issues": "", "notes": "Bassett", "cardLog": []}, {"id": 137, "type": "School", "names": "Elizabeth, Jon, Torsten, Laura Beck", "address": "Beck Family\n2824 Humboldt Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "Beck", "cardLog": []}, {"id": 138, "type": "School", "names": "Ryan, Lisa, Alice, Isabel Bender", "address": "Bender Family\n16248 Tonka Lane\nMinnetonka, MN 55345", "issues": "", "notes": "Bender", "cardLog": []}, {"id": 139, "type": "School", "names": "Carissa, Mark, Emma, Ida Brown", "address": "Brown Family\n2009 Upton Avenue S\nMinneapolis, MN 55405", "issues": "", "notes": "Brown", "cardLog": []}, {"id": 140, "type": "School", "names": "Renee, Rob, Sabina, Paloma, Lorenzo Good", "address": "Camara Good Family\n3215 Irving Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "Camara-Good", "cardLog": []}, {"id": 141, "type": "School", "names": "Simon Chang (and family)", "address": "Chang Family\n2012 Emerson Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Chang", "cardLog": []}, {"id": 142, "type": "School", "names": "Corey China, Joe Ungemah, Lyra", "address": "China Ungemah Family\n2623 Irving Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "China", "cardLog": []}, {"id": 143, "type": "School", "names": "Tracy Claeys (Hermoine)", "address": "Tracy Claeys\n8692 Lake Riley Drive\nChanhassen, MN 55317", "issues": "", "notes": "Claeys", "cardLog": []}, {"id": 144, "type": "School", "names": "Martha Cooper", "address": "Martha Cooper\n2509 Thomas Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Cooper", "cardLog": []}, {"id": 145, "type": "School", "names": "Emily & John Doyle", "address": "Doyle Family\n2028 Sheridan Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Doyle", "cardLog": []}, {"id": 146, "type": "School", "names": "Natalie & Kieran Dwyer", "address": "Dwyer Family\n1911 Kenwood Parkway\nMinneapolis, MN 55405", "issues": "", "notes": "Dwyer", "cardLog": []}, {"id": 147, "type": "School", "names": "Kirsten, Scott, Evan, Siri Eitreim", "address": "Eitreim Family\n2708 Drew Avenue South\nMinneapolis, MN 55416", "issues": "", "notes": "Eitreim", "cardLog": []}, {"id": 148, "type": "School", "names": "Renita, Kalla Faye", "address": "Renita Faye\n5525 Blaisdell Avenue\nMinneapolis, MN 55419", "issues": "", "notes": "Faye", "cardLog": []}, {"id": 149, "type": "School", "names": "Kelly & John Henry", "address": "Henry Family\n2820 Irving Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "Henry", "cardLog": []}, {"id": 150, "type": "School", "names": "Michelle Kemp & Jon MacPherson", "address": "Kemp MacPherson\n1905 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Kemp", "cardLog": []}, {"id": 151, "type": "School", "names": "Aurora Kerl (Ben Kerl, Abby Mackenzie)", "address": "Mackenzie Kerl Family\n2414 Lake Place\nMinneapolis, MN 55405", "issues": "", "notes": "Kerl", "cardLog": []}, {"id": 152, "type": "School", "names": "Jenny & Rob LeFevere", "address": "LeFevere Family\n2309 Oliver Avenue South\nMinneapolis, MN 55405", "issues": "", "notes": "LeFevere", "cardLog": []}, {"id": 153, "type": "School", "names": "Erin Eggenberger & Miles Mercer", "address": "Mercer Family\n3132 Dupont Avenue South\nMinneapolis, MN 55408", "issues": "", "notes": "Mercer", "cardLog": []}, {"id": 154, "type": "School", "names": "Erika & Seth & Hugo & Vera", "address": "Nelson Family\n3452 Holmes Ave\nMinneapolis, MN 55408", "issues": "", "notes": "Nelson", "cardLog": []}, {"id": 155, "type": "School", "names": "Jennifer, Bristol, Phoebe Pann", "address": "Pann Family\n2529 Irving Ave S\nMinneapolis, MN 55405", "issues": "Right names?", "notes": "Pann", "cardLog": []}, {"id": 156, "type": "School", "names": "Janet Parker", "address": "Janet Parker\n5648 Dupont Ave S\nMinneapolis, MN 55419", "issues": "", "notes": "Parker", "cardLog": []}, {"id": 157, "type": "School", "names": "Alexis and Tom Racciatti", "address": "Racciatti Family\n1701 Irving Ave S\nMinneapolis, MN 55403", "issues": "", "notes": "Racciatti", "cardLog": []}, {"id": 158, "type": "School", "names": "Kate & Tony & Iris Roos", "address": "Roos Family\n2439 Bryant Avenue South\nMinneapolis, MN 55405", "issues": "", "notes": "Roos", "cardLog": []}, {"id": 159, "type": "School", "names": "Amy Sanborn, Scott Sidney", "address": "Sanborn Sidney Family\n2804 Irving Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "Sanborn", "cardLog": []}, {"id": 160, "type": "School", "names": "Daisy & Kyle Simpson", "address": "Simpson Family\n2409 W 22nd St\nMinneapolis, MN 55405", "issues": "", "notes": "Simpson", "cardLog": []}, {"id": 161, "type": "School", "names": "Jenny & Brandon Small", "address": "The Smalls\n2116 Oliver Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Small", "cardLog": []}, {"id": 162, "type": "School", "names": "Katherin, Severin St Martin", "address": "Dr. & Mr. St. Martin\n208 100th Street SE\nWatertown, MN 55388", "issues": "", "notes": "St Martin", "cardLog": []}, {"id": 163, "type": "School", "names": "Will & Krista Stensrud", "address": "Stensrud Family\n2019 Thomas Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Stensrud", "cardLog": []}, {"id": 164, "type": "School", "names": "Brett, Caroline, Magnolia Thompson", "address": "Thompson Family\n308 Sunnyridge Lane\nGolden Valley, MN 55422", "issues": "", "notes": "Thompson", "cardLog": []}, {"id": 165, "type": "School", "names": "Cam, Emily, Evie, Jack, Silas Winton", "address": "Pryor Winton Family\n1715 Logan Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Winton", "cardLog": []}, {"id": 166, "type": "School", "names": "Erin & Matt Wise", "address": "Wise Family\n3225 Humboldt Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "Wise", "cardLog": []}, {"id": 167, "type": "School", "names": "Hannah Ouellette", "address": "Ouellette Family\n30614 147th St\nPrinceton, MN 55371", "issues": "Wrong address", "notes": "Wrong address", "cardLog": []}, {"id": 168, "type": "School", "names": "Julie Young & Bob Walser", "address": "Young Walser\n2308 Fremont Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "Young", "cardLog": []}, {"id": 169, "type": "School", "names": "Melissa Kell, Brett Hansen, Jojo, Violet", "address": "Kell Hansen Family\n3208 Colfax Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "", "cardLog": []}, {"id": 170, "type": "School", "names": "Murphy Family", "address": "Murphy Gustafson\n2804 Irving Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "", "cardLog": []}, {"id": 171, "type": "School", "names": "Aidan O'Connor & Drew Ashwood", "address": "O'Connor Ashwood Family\n2401 Humboldt Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 172, "type": "School", "names": "Blake, Alexander Rouhani", "address": "Rouhani Family\n2713 Irving Ave S\nMinneapolis, MN 55408", "issues": "", "notes": "", "cardLog": []}, {"id": 173, "type": "School", "names": "Rose Routhier", "address": "Routhier Family\n2105 Newton Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 174, "type": "School", "names": "Emily Sohn, Gabe Keller, Ben", "address": "Sohn Keller Family\n1526 25th St W\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 175, "type": "School", "names": "Olson, Karin, Carl, Charlotte", "address": "The Olsons\n2301 Penn Ave S\nMinneapolis, MN 55405", "issues": "", "notes": "", "cardLog": []}, {"id": 176, "type": "Teacher", "names": "Claire Thometz", "address": "Claire Thometz\n438 Portland Ave Apt 5\nSt Paul, MN 55102", "issues": "", "notes": "", "cardLog": []}, {"id": 177, "type": "Yale", "names": "Johnna & Steve Gluth", "address": "Gluth Family\n1026 Richelieu Lane\nHouston, TX 77018", "issues": "", "notes": "Gluth", "cardLog": []}, {"id": 178, "type": "Yale", "names": "Joef, Julia, Ranger, Pancake Hatton", "address": "Hatton Family\n723 San Carlos Ave\nAlbany, CA 94706", "issues": "", "notes": "Hatton", "cardLog": []}, {"id": 179, "type": "Yale", "names": "Anna, Daniel, Roman Heath", "address": "Heath Family\n4393 Detroit Avenue\nOakland, CA 94619", "issues": "", "notes": "Heath", "cardLog": []}, {"id": 180, "type": "Yale", "names": "Danielle Holly & Ben Healey \u2014 Caleb, Ara, Jonah", "address": "Holly Healey Family\n516 Rugby Road\nBrooklyn, NY 11226", "issues": "", "notes": "Holly", "cardLog": []}, {"id": 181, "type": "Yale", "names": "Jenny McColloch", "address": "Jenny McColloch\n1333 N. Wolcott Ave #2\nChicago, IL 60622", "issues": "", "notes": "McColloch", "cardLog": []}, {"id": 182, "type": "Yale", "names": "Sarah, Chris, Henry, Charlie Parker", "address": "Parker Family\n6 Oak Street\nCambridge, MA 02139", "issues": "", "notes": "Parker", "cardLog": []}, {"id": 183, "type": "Yale", "names": "Archana, Balaji, Akshay Venkataraman", "address": "Venkataraman Family\n34 Knollwood Dr\nDover, MA 02030", "issues": "", "notes": "Venkataraman", "cardLog": []}, {"id": 184, "type": "Yale", "names": "Ned & Martha Whitney", "address": "Beagle & Ned Whitney\n110 Riverside Drive,12A\nNew York, NY 10024", "issues": "", "notes": "Whitney", "cardLog": []}, {"id": 185, "type": "Yale", "names": "Victoria Escalle & John Whitney", "address": "Escalle & Whitney\n8344 Stoneridge Ter\nBoulder, CO 80302-9324", "issues": "", "notes": "Whitney", "cardLog": []}, {"id": 186, "type": "Yale", "names": "Wylie Youngberg Family", "address": "Wylie Youngberg Family\n87 Marvel Road\nNew Haven, CT 06515-2117", "issues": "", "notes": "Wylie", "cardLog": []}, {"id": 187, "type": "Yale", "names": "Jason Zahorchak & Sam Horng", "address": "Zahorchak & Horng\n350 Cabrini Blvd, Apt 4E\nNew York City, NY 10040", "issues": "", "notes": "Zahorchak", "cardLog": []}, {"id": 188, "type": "Yale", "names": "Mary Zihal & Dena L. Miller M.D., Emma, Rachel", "address": "Zihal Miller Family\n126 Cottage St\nNew Haven, CT 06511", "issues": "", "notes": "Zihal", "cardLog": []}], "categories": ["Blake", "Boston", "Cargill", "EnerNOC", "Friends", "Germany", "Greta Family", "Greta Friends", "Greta High School", "Greta History", "Hand deliver", "International", "Matt Family", "Matt Friends", "Matt History", "Matt Work", "Neighbors", "Other", "School", "Teacher", "Yale"]};
+    // Get current year
+    const currentYear = new Date().getFullYear();
+
+    // Initial data (embedded from CSV)
+    const INITIAL_DATA = {"entries":[{"id":1,"type":"Blake","names":"Bass Family (Sharon, David, Carly)","address":"Bass Family\n5208 Ridge Road\nEdina, MN 55436","issues":"","notes":"Bass","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":2,"type":"Blake","names":"Emma Goodman & fam","address":"The Goodman Family\n4625 DuPont Ave S\nMinneapolis, MN 55419","issues":"","notes":"Goodman","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":3,"type":"Blake","names":"Amir Kats","address":"Mr. Kats\nBlake Campus\n110 Blake Road S\nHopkins, MN 55343","issues":"","notes":"Kats","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":4,"type":"Blake","names":"Kojasoy Family - Shannon, Tumay, Sabiha, Kaya","address":"Kojasoy Family\n1518 W 22nd St\nMinneapolis, MN 55405","issues":"","notes":"Kojasoy","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":5,"type":"Blake","names":"Renee, Rob, Landon, Zander Maul","address":"Maul Family\n4206 Zenith Ave S\nMinneapolis, MN 55410","issues":"","notes":"Maul","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":6,"type":"Boston","names":"Hannah, Topher, Gracie, Sean, Sloane Brennan","address":"Brennan Family\n1 Ocean Meadow Lane\nMarblehead, MA 01945","issues":"","notes":"Brennan","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":7,"type":"Boston","names":"Dr. Dobberteen (Lisa)","address":"Lisa Dobberteen, MD\n139 Cushing St. #3\nCambridge, MA 02138","issues":"","notes":"Dobberteen","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":8,"type":"Boston","names":"Melissa, Ben, Will Jack Eastwood","address":"Eastwood Family\n17 Oakland Street\nLexington, MA 02420","issues":"","notes":"Eastwood","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":9,"type":"Boston","names":"Kate, Carl, Brooklyn, Ryleigh Graham","address":"Graham Ditkoff Family\n39 Fellows Rd\nIpswich, MA 01938","issues":"","notes":"Graham","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":10,"type":"Boston","names":"Paul & Nona Maker","address":"Paul & Nona Maker\n110 Laurie Lane\nWrentham, MA 02093","issues":"","notes":"Maker","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":11,"type":"Boston","names":"Pat, Chrissy, Claire, Brendan McMahon","address":"McMahon Family\n22 Cottage Street\nWellesley, MA 02482","issues":"","notes":"McMahon","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":12,"type":"Cargill","names":"Josh Bovee","address":"Bovee Family\n1249 Interlaken Parkway North\nWaconia, MN 55387","issues":"","notes":"Bovee","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":13,"type":"Cargill","names":"Sara Isbell & Bill Cunningham & Sam","address":"The Cunningham Family\n7454 Bent Bow Trail\nChanhassen, MN 55317","issues":"","notes":"Isbell","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":14,"type":"Cargill","names":"Justin Kershaw","address":"Kershaw Family\n2355 East Medicine Lake Boulevard\nMinneapolis, MN 55441","issues":"","notes":"Kershaw","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":15,"type":"Cargill","names":"Nathan & Melissa Miller","address":"The Millers\n101 16th Ave N\nHopkins, MN 55343","issues":"","notes":"Miller","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":16,"type":"Cargill","names":"Garrick Van Buren","address":"Van Buren Family\n3433 Skycroft Circle\nMinneapolis, MN 55418","issues":"","notes":"Van Buren","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":17,"type":"Cargill","names":"Jason & Treva Vogt","address":"Vogt Family\n6229 Parkwood Rd\nEdina, MN 55436","issues":"","notes":"Vogt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":18,"type":"Cargill","names":"James Weed","address":"Weed Family\n9055 County Road 11\nMaple Plain, MN 55359","issues":"","notes":"Weed","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":19,"type":"EnerNOC","names":"Erica Morgenstein & Alanna Boyd — Harper, Rowan, Will","address":"Boygenstein Family\n192 Caleb St\nPortland, ME 04102","issues":"","notes":"Boygenstein","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":20,"type":"EnerNOC","names":"Mike, Erin, James, Ryan Desmarais","address":"Desmarais Family\n205 Dorset Lane\nMadison, CT 06443","issues":"","notes":"Desmarais","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":21,"type":"EnerNOC","names":"Don & Lorrie Jenkins","address":"Don & Lorrie Jenkins\n23 Fletcher St\nFoxboro, MA 02035-2767","issues":"","notes":"Jenkins","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":22,"type":"EnerNOC","names":"Brent Sisson","address":"Brent Sisson\n100 Rollins Road\nMillbrae, CA 94030","issues":"","notes":"Sisson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":23,"type":"Friends","names":"Boleens","address":"Boleen Family\n4801 11th Ave S\nMinneapolis, MN 55417","issues":"","notes":"Boleen","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":24,"type":"Friends","names":"Matt Horstman & Emily Langerak","address":"Horsrak\n2539 37th Ave S\nMinneapolis, MN 55406","issues":"","notes":"Horsrak","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":25,"type":"Friends","names":"Matt, Angela, Mark, Jane Schneider","address":"Schneider Family\n978 Barrett St\nSt Paul, MN 55103","issues":"","notes":"Schneider","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":26,"type":"Friends","names":"Ryan and Natalie Scholz and Theo","address":"Scholz Family\n2423 Irving Avenue South\nMinneapolis, MN 55405","issues":"","notes":"Scholz","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":27,"type":"Friends","names":"Tina, Jeff, Pearl, Rose Yager","address":"The Yagers\n1801 Asbury Street\nFalcon Heights, MN 55113","issues":"","notes":"Yager","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":28,"type":"Germany","names":"James Correa","address":"James Correa\n1631 North Maple Street\nBurbank, CA 91505","issues":"","notes":"Correa","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":29,"type":"Germany","names":"Elizabeth Culatta & Cutter Tomlin & Ethan","address":"Culatta Tomlin Family\n609 Canterbury Drive \nAugusta, GA 30909","issues":"","notes":"Culatta","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":30,"type":"Greta Family","names":"Bebop","address":"Bebop\n35465 Lessnau Lane\nClinton, MT 59825","issues":"","notes":"Bebop","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":31,"type":"Greta Family","names":"Jane Ellwood","address":"Jane Ellwood \n534 Spruce Drive\nHudson, WI 54016","issues":"","notes":"Ellwood","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":32,"type":"Greta Family","names":"Susan Greer & Benjamin Guardado","address":"Greer & Guardado\n4250 Boulder Ridge Pt\nEagan, MN 55122","issues":"","notes":"Greer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":33,"type":"Greta Family","names":"Jim & Mary (James — MN)","address":"Hofmann & McKenna\n14284 Fruit Farm Road\nSaint Joseph, MN 56374","issues":"","notes":"Hofmann","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":34,"type":"Greta Family","names":"Sarah Turk-Hofmann & Walker Hofmann","address":"Hofmann Family\n8941 Purple Lilac Circle\nLorton, VA 22079","issues":"","notes":"Hofmann","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":35,"type":"Greta Family","names":"Owen, Megan, Elam, Sylvan, Omri Hofmann","address":"Hofmann Family\nE14041 County Road D\nLa Farge, WI 54639","issues":"","notes":"Hofmann","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":36,"type":"Greta Family","names":"Maureen Hougo","address":"Maureen Hougo\n260 S. Osceola, Apt. #408\nSt. Paul, MN 55102","issues":"","notes":"Hougo","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":37,"type":"Greta Family","names":"Jimmy Kroska & Angie Reiff","address":"Kroska & Reiff\n8516 196th St SW #217\nEdmonds, WA 98026","issues":"","notes":"Kroska","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":38,"type":"Greta Family","names":"Kathleen Kroska & Hugh Hofmann","address":"Kroska / Hofmann\n416 Willow St\nViroqua, WI 54665","issues":"","notes":"Kroska","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":39,"type":"Greta Family","names":"Paul Kroska & Keran Flynn-Kroska","address":"The Kroskas\n4000 Mud Creek Rd\nEly, MN 55731","issues":"","notes":"Kroska","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":40,"type":"Greta Family","names":"Mary, Addie, Emma, Josh Larson","address":"Larson Family\n2170 Wolf Creek Pass\nEly, MN 55731","issues":"","notes":"Larson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":41,"type":"Greta Family","names":"Julie & Jim Tussing","address":"The Tussings\n13931 Drommond Trl\nApple Valley, MN 55124-9205","issues":"","notes":"Tussing","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":42,"type":"Greta Friends","names":"Andrew Aarlt & Ethan Mooar","address":"Aarlt-Mooar Family\n2237 Berland Place\nSt Paul, MN 55119","issues":"","notes":"Aarlt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":43,"type":"Greta Friends","names":"Nikki & Grayson","address":"Nikki & Grayson\n3500 Girard Ave S\nMinneapolis, MN 55408","issues":"","notes":"Bottol","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":44,"type":"Greta Friends","names":"Becky, Michael, Oliver Braxton","address":"The Braxton Family\n2020 Viola Rd. NE\nRochester, MN 55906","issues":"","notes":"Braxton","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":45,"type":"Greta Friends","names":"Peter & Leah Elsham","address":"Elsham Family\n3818 Waveland Terrace\nMinneapolis, MN 55410","issues":"","notes":"Elsham","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":46,"type":"Greta Friends","names":"Marjorie & Erik Hegstrom","address":"Hegstrom Family\n2160 Nelson Road\nDelano, MN 55328","issues":"","notes":"Hegstrom","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":47,"type":"Greta Friends","names":"Taryn Holly & Thomas Atkinson & Jack Atkinson","address":"Taryn Holly & Thomas Atkinson\n56 Roswell Avenue\nStaten Island, NY 10314","issues":"","notes":"Holly","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":48,"type":"Greta Friends","names":"Corey, Zeb, Rebel, General Nicholson","address":"Nicholson Family\n1741 NE 57th Ave\nPortland, OR 97213","issues":"","notes":"Nicholson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":49,"type":"Greta Friends","names":"Sadie Rubin & Leo Laub","address":"Sadie & Leo\n2324 Girard Ave S\nMinneapolis, MN 55405","issues":"","notes":"Rubin","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":50,"type":"Greta Friends","names":"Liz Scherer & Nels Dyste","address":"Scherer Dyste Family\n4428 Aldrich Avenue South\nMinneapolis, MN 55419","issues":"","notes":"Scherer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":51,"type":"Greta Friends","names":"Michelle Weber & Brandon Carlson","address":"Weber Carlson Family\n9938 108th Pl N\nMaple Grove, MN 55369","issues":"","notes":"Weber","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":52,"type":"Greta Friends","names":"Val, Dave Weigal","address":"The Weigals\n18932 Meadow Creek Drive\nMokena, IL 60448","issues":"","notes":"Weigals","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":53,"type":"Greta High School","names":"Kavitha Bhagat & Family","address":"Bhagat Family\n3927 W Meadow Lane\nOrange, OH 44122","issues":"","notes":"Bhagat","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":54,"type":"Greta High School","names":"Leslie Gully & Family","address":"Gully Family\n1421 Chadwick Dr\nNormal, IL 61761","issues":"","notes":"Gully","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":55,"type":"Greta High School","names":"Sarvis Family","address":"Sarvis Family\n965 Kansas Ave SE\nHuron, SD 57350","issues":"","notes":"Sarvis","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":56,"type":"Greta History","names":"Jean, Terry Beck","address":"The Becks\nS 3368A Haugrud Ridge Rd\nLa Farge, WI 54639","issues":"","notes":"Becks","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":57,"type":"Greta History","names":"Kathy & Mike Deacon-Weber","address":"Deacon-Weber Family\n4136 Reiland Lane\nShoreview, MN 55126","issues":"","notes":"Daacon Weber","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":58,"type":"Greta History","names":"Victoria, Paul, Greyson, Keegan Georgoff","address":"Georgoff Family\n16980 Oval Rum Drive\nWimauma, FL 33598","issues":"","notes":"Georgoff","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":59,"type":"Greta History","names":"Jan Jensen","address":"Jan Jensen\n44487 367th Ave.\nSt Peter, MN 56082","issues":"","notes":"Jensen","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":60,"type":"Greta History","names":"Lara, Mark Matuszewski","address":"Matuszewski Family\n10198 Wateridge Circle\nUnit 156\nSan Diego, CA 92121","issues":"","notes":"Matuszewski","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":61,"type":"Hand deliver","names":"Bruce & Anne Bouta","address":"Bouta Family\n2030 Queen Avenue South\nMinneapolis, MN 55405","issues":"","notes":"Bouta","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":62,"type":"Hand deliver","names":"Mei-Ling, Matt, Pruitt, Lewis Smith","address":"Smith Family\n2005 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Dayton","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":63,"type":"Hand deliver","names":"Susan Ferrell","address":"Kenwood Elementary School\nAttn: Susan Ferrell\n2013 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"Ferrell","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":64,"type":"Hand deliver","names":"Friedmans","address":"Friedman Family\n2417 W 21st St\nMinneapolis, MN 55405","issues":"","notes":"Friedmans","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":65,"type":"Hand deliver","names":"Ms Gregory","address":"Ms Gregory\n5533 12th Ave S\nMinneapolis, MN 55417","issues":"","notes":"Gregory","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":66,"type":"Hand deliver","names":"Hoegs","address":"The Hoegs\n2029 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Hoegs","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":67,"type":"Hand deliver","names":"Maggie piano","address":"Maggie Hood","issues":"Need address","notes":"Hood","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":68,"type":"Hand deliver","names":"Jeffcoats","address":"Jeffcoat Family","issues":"","notes":"Jeffcoat","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":69,"type":"Hand deliver","names":"Susan Kettering","address":"Susan Kettering\n2018 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Kettering","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":70,"type":"Hand deliver","names":"Krihas","address":"Kriha Family\n2024 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Kriha","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":71,"type":"Hand deliver","names":"Megan and Chris Lawrence-McGrann","address":"Lawrence McGrann Family\n2012 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Lawrence McGrann","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":72,"type":"Hand deliver","names":"Ali & Justin & Thea & Max Lerman","address":"Lerman Family\n2003 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Lerman","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":73,"type":"Hand deliver","names":"Lucas Family","address":"Lucas Family\n1977 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Lucas","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":74,"type":"Hand deliver","names":"Brian Palmer & Kevin Madden","address":"Brian & Kevin\n2006 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Madden","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":75,"type":"Hand deliver","names":"Robin & Steve Manthie","address":"Manthie Family\n2016 Kenwood Parkway\nMinneapolis, MN 55405","issues":"","notes":"Manthie","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":76,"type":"Hand deliver","names":"Meg Montgomery and Dan Miller, Rory, Monty, Frances","address":"Montgomery & Miller Family\n1973 Queen Ave S\nMinneapolis, MN 55405","issues":"","notes":"Montgomery","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":77,"type":"Hand deliver","names":"Dee &  Robert Morrison","address":"Morrison Family\n2015 Queen Avenue South\nMinneapolis, MN 55405","issues":"","notes":"Morrison","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":78,"type":"Hand deliver","names":"Martha Suedbeck","address":"Kenwood Elementary School\nAttn: Martha Suedbeck\n2013 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"Suedbeck","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":79,"type":"Hand deliver","names":"Ms Sullivan","address":"Sullivan & Gavin\n5051 Nokomis Avenue\nMinneapolis, MN 55417","issues":"","notes":"Sullivan","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":80,"type":"Hand deliver","names":"Ms Tostenson, Haley","address":"Kenwood Elementary School\nAttn: Ms. Tostenson\n2013 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"Tostenson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":81,"type":"Hand deliver","names":"Jim Diracles & Debi Weldele","address":"Weldele & Diracles\n1985 Queen Avenue S\nMinneapolis, MN 55405","issues":"","notes":"Weldele","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":82,"type":"Hand deliver","names":"Katy & Jon","address":"Gehrig Phelan Family\n2231 W 21st St\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":83,"type":"Hand deliver","names":"Heidi Johnson","address":"Kenwood Elementary School\nAttn: Heidi Johnson\n2013 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":84,"type":"Hand deliver","names":"Ms Natalie","address":"Kenwood Elementary School\nAttn: Natalie Peterson\n2013 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":85,"type":"Hand deliver","names":"Kris Prince","address":"Kris Prince\n2547 Emerson Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":86,"type":"International","names":"Holger Buetschle & Frank Oerther","address":"Frank Oerther & Holger Buetschle\nHauptstraße 58\n67271 Obersülzen\nGermany","issues":"","notes":"Buetschle","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":87,"type":"International","names":"Alexis Cazin","address":"Alexis Cazin\n7 b Avenue de Miremont\n1206 Genève\nSuisse","issues":"","notes":"Cazin","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":88,"type":"International","names":"Yannis","address":"Yannis Krontiris\nPaul-Heyse-Str. 31C\n80336 Munich, DE","issues":"","notes":"Krontiris","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":89,"type":"International","names":"Carolina Saglio","address":"Carolina Saglio\nAv Salvador Maria de Carril 4173-4\n1419 Ciudad Autonoma de Buenos Aires\nArgentina","issues":"","notes":"Saglio","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":90,"type":"International","names":"Carly Brandelius Schmitt, Sven Bjoern Brandelius, Bjorn","address":"Brandelius Family\nAm Drüerberg 18\n59872 Meschede\nGermany","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":91,"type":"International","names":"Jonathan, Ryanne, Trey Shafer","address":"Shafer Family\nBP 6385\nKigali, Rwanda","issues":"","notes":"Shafer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":92,"type":"International","names":"Greer & Nick Shearer","address":"Shearer Family\n12 Kentucky St\nEllerslie, Auckland\nNew Zealand, 1051","issues":"","notes":"Shearer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":93,"type":"International","names":"Jenny Smith","address":"Jenny Smith\nSpelzenstr. 15\n68167, Mannheim\nGermany","issues":"","notes":"Smith","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":94,"type":"International","names":"Kristine, Kai, Sophie, Amelie Solmitz","address":"Familie Solmitz\nKantstrasse 8\n68165, Mannheim\nGermany","issues":"","notes":"Solmitz","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":95,"type":"Matt Family","names":"Erica, Ben, June, Max, Ray Bauer","address":"The Bauers\n14015 Crown Drive\nEden Prairie, MN 55346","issues":"","notes":"Bauer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":96,"type":"Matt Family","names":"Lois & Pat Bishop","address":"The Bishops\n8740 E. Ridge Terrace Dr\nTucson, AZ 85710","issues":"","notes":"Bishop","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":97,"type":"Matt Family","names":"Marie Dimock (Dick, Karla)","address":"Dimock Family\n51 Patricia St\nFlorence, KY 41042","issues":"","notes":"Dimock","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":98,"type":"Matt Family","names":"Butch Edevold & Jean","address":"Butch & Jean\n36629 225th Ave\nBagley, MN 56621","issues":"","notes":"Edevold","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":99,"type":"Matt Family","names":"Jurene Fremstad","address":"Jurene Fremstad\n5825 Fremont Ave S\nMinneapolis, MN 55419","issues":"","notes":"Fremstad","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":100,"type":"Matt Family","names":"Irene Lindgren","address":"Irene Lindgren\n2170 128th Avenue NW\nCoon Rapids, MN  55433","issues":"","notes":"Lindgren","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":101,"type":"Matt Family","names":"Susan & Kip Narber","address":"Narber Family\n64720 Collins Rd\nBend, OR 97703","issues":"","notes":"Narber","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":102,"type":"Matt Family","names":"Jane & John Reisch (Arizona -- winters)","address":"The Reisches\n916 W Placita Quieta\nGreen Valley, AZ 85622","issues":"","notes":"Reisch","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":103,"type":"Matt Family","names":"Liz Schmitt & Bob Correia","address":"Liz Schmitt & Bob Correia\nP.O. Box 729\nKasilof, AK 99610","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":104,"type":"Matt Family","names":"Peter Schmitt & Marais Bjornberg","address":"Peter & Marais\n3223 McKinley St NE\nMinneapolis, MN 55418","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":105,"type":"Matt Family","names":"Matt Schmitt & Deb Robinson","address":"Schmitt & Robinson\n774 Timber Lane\nShoreview, MN 55126","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":106,"type":"Matt Family","names":"Lou, Cheri, Ryan, Olivia Schmitt","address":"Schmitt Family\nP.O.Box 7222\nBend, OR 97708","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":107,"type":"Matt Family","names":"Grace Tangjerd-Schmitt & Tiger Schmitt","address":"The Schmitts\n1172 Winthrop St S\nSt Paul, MN 55119","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":108,"type":"Matt Family","names":"Bill & Liz Schmitt","address":"The Schmitts\n17 Williams Woods Road\nMahtomedi, MN 55115","issues":"","notes":"Schmitt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":109,"type":"Matt Family","names":"Gretchen Stein & David Wettergreen","address":"Stein & Wettergreen\n30 Deer Hill Drive\nNorth Oaks, MN 55127","issues":"","notes":"Stein","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":110,"type":"Matt Family","names":"Lowel Tangjerd & Christie Teigland","address":"Tangjerd & Teigland\n1043 Stonington Dr\nArnold, MD 21012","issues":"","notes":"Tangjerd","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":111,"type":"Matt Friends","names":"Olga & Andrew Baker","address":"The Bakers\n94 Marathon Street, Unit 1\nArlington, MA 02474","issues":"","notes":"Baker","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":112,"type":"Matt Friends","names":"Craig Buerstatte","address":"Buerstatte\n515 14th St. SE\nWashington DC, 20003","issues":"","notes":"Buerstatte","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":113,"type":"Matt Friends","names":"Jermaine Clark & Sarah Pitzer","address":"Pitzer - Clark\n7417 SW Pine St\nPortland, OR 97223","issues":"","notes":"Clark","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":114,"type":"Matt History","names":"Ellen Benavides & Jennifer Ho","address":"Benavides & Ho\n2349 Commonwealth Ave \nSt Paul, MN 55108-1603","issues":"","notes":"Benavides","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":115,"type":"Matt History","names":"John Elwell & Maureen Peltier","address":"Elwell & Peltier \n233 Congress St W\nSt Paul, MN 55107-2114","issues":"","notes":"Elwell","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":116,"type":"Matt History","names":"Rebecca Schneider","address":"Rebecca Schneider\n1709 Van Buren Ave\nSt Paul, MN 55104","issues":"","notes":"Schneider","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":117,"type":"Matt Work","names":"Ryan & Melissa Clinton","address":"Clinton Family\n450 Williamsburg Lane\nMemphis, TN 38117","issues":"","notes":"Clinton","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":118,"type":"Matt Work","names":"Shawn Schottler -- tree farm","address":"Dr Shawn Schottler\n458 Rice Lake Road\nSomerset, WI 54025","issues":"","notes":"Schottler","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":119,"type":"Neighbors","names":"Jean Brooks","address":"Jean Brooks\nc/o The Kenwood\n825 Summit Avenue\nMinneapolis, MN 55403","issues":"","notes":"Brooks","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":120,"type":"Neighbors","names":"Delmonico, Christine and Jim","address":"Delmonico Family\n1960 Sheridan Ave S\nMinneapolis, MN 55405","issues":"","notes":"Delmonico","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":121,"type":"Neighbors","names":"Eric Johnson and Jill Fedje","address":"Fedje & Johnson\n2024 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"Johnson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":122,"type":"Neighbors","names":"Katherine & Scott Kovarik","address":"Kovarik Family\n1916 Knox Ave S\nMinneapolis, MN 55403","issues":"","notes":"Kovarik","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":123,"type":"Neighbors","names":"Cynthia & Brooks Martin","address":"Martin Family\n1919 Mount Curve Ave\nMinneapolis, MN 55405","issues":"","notes":"Martin","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":124,"type":"Neighbors","names":"Peggy and Ed","address":"The Pluimers\n2020 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"Pluimers","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":125,"type":"Neighbors","names":"Jon & Marcee Schwartz","address":"Schwartz Family\n2008 Kenwood Parkway\nMinneapolis, MN 55405","issues":"","notes":"Schwartz","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":126,"type":"Neighbors","names":"Monica & Neil White","address":"White Family\n1786 Irving Ave S\nMinneapolis, MN 55405","issues":"","notes":"White","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":127,"type":"Neighbors","names":"Courtney Kiernat","address":"Kiernats\n2512 Upton Ave South\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":128,"type":"Neighbors","names":"Erica Mitchell, Jonathan Williams, Clara","address":"Mitchell Williams Family\n1987 Sheridan Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":129,"type":"Neighbors","names":"Anton and Mary Plaisted","address":"Plaisted Family\n2012 Sheridan Avenue S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":130,"type":"Other","names":"Jordan Carlson","address":"House of Music\nAttn: Jordan Carlson\n4948 Washburn Ave S\nMinneapolis, MN 55410","issues":"","notes":"Carlson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":131,"type":"Other","names":"Erik Wood","address":"Wood Family\n5456 Fremont Ave S\nMinneapolis, MN 55419","issues":"","notes":"Wood","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":132,"type":"Other","names":"Sam, Therapist","address":"","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":133,"type":"School","names":"Marstal & David Aamodt","address":"The Aamodt Family\n1805 Emerson Ave S\nMinneapolis, MN 55403","issues":"","notes":"Aamodt","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":134,"type":"School","names":"Advisory","address":"Blake Campus\n110 Blake Road S\nHopkins, MN 55343","issues":"","notes":"Advisory","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":135,"type":"School","names":"Molly, Devon Alexander","address":"Alexander Family\n209 Ottawa Ave S\nMinneapolis, MN 55416","issues":"","notes":"Alexander","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":136,"type":"School","names":"Hellen & Craig & Logan Bassett","address":"Bassett Family\n5540 Cumberland Rd\nMinneapolis, MN 55410","issues":"","notes":"Bassett","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":137,"type":"School","names":"Elizabeth, Jon, Torsten, Laura Beck","address":"Beck Family\n2824 Humboldt Ave S\nMinneapolis, MN 55408","issues":"","notes":"Beck","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":138,"type":"School","names":"Ryan, Lisa, Alice, Isabel Bender","address":"Bender Family\n16248 Tonka Lane\nMinnetonka, MN 55345","issues":"","notes":"Bender","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":139,"type":"School","names":"Carissa, Mark, Emma, Ida Brown","address":"Brown Family\n2009 Upton Avenue S\nMinneapolis, MN 55405","issues":"","notes":"Brown","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":140,"type":"School","names":"Renee, Rob, Sabina, Paloma, Lorenzo Good","address":"Camara Good Family\n3215 Irving Ave S\nMinneapolis, MN 55408","issues":"","notes":"Camara-Good","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":141,"type":"School","names":"Simon Chang (and family)","address":"Chang Family\n2012 Emerson Ave S\nMinneapolis, MN 55405","issues":"","notes":"Chang","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":142,"type":"School","names":"Corey China, Joe Ungemah, Lyra","address":"China Ungemah Family\n2623 Irving Ave S\nMinneapolis, MN 55408","issues":"","notes":"China","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":143,"type":"School","names":"Tracy Claeys (Hermoine)","address":"Tracy Claeys\n8692 Lake Riley Drive\nChanhassen, MN 55317","issues":"","notes":"Claeys","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":144,"type":"School","names":"Martha Cooper","address":"Martha Cooper\n2509 Thomas Ave S\nMinneapolis, MN 55405","issues":"","notes":"Cooper","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":145,"type":"School","names":"Emily & John Doyle","address":"Doyle Family\n2028 Sheridan Ave S\nMinneapolis, MN 55405","issues":"","notes":"Doyle","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":146,"type":"School","names":"Natalie & Kieran Dwyer","address":"Dwyer Family\n1911 Kenwood Parkway\nMinneapolis, MN 55405","issues":"","notes":"Dwyer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":147,"type":"School","names":"Kirsten, Scott, Evan, Siri Eitreim","address":"Eitreim Family\n2708 Drew Avenue South\nMinneapolis, MN 55416","issues":"","notes":"Eitreim","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":148,"type":"School","names":"Renita, Kalla Faye","address":"Renita Faye\n5525 Blaisdell Avenue\nMinneapolis, MN 55419","issues":"","notes":"Faye","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":149,"type":"School","names":"Kelly & John Henry","address":"Henry Family\n2820 Irving Ave S\nMinneapolis, MN 55408","issues":"","notes":"Henry","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":150,"type":"School","names":"Michelle Kemp & Jon MacPherson","address":"Kemp MacPherson\n1905 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"Kemp","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":151,"type":"School","names":"Aurora Kerl (Ben Kerl, Abby Mackenzie)","address":"Mackenzie Kerl Family\n2414 Lake Place\nMinneapolis, MN 55405","issues":"","notes":"Kerl","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":152,"type":"School","names":"Jenny & Rob LeFevere","address":"LeFevere Family\n2309 Oliver Avenue South\nMinneapolis, MN 55405","issues":"","notes":"LeFevere","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":153,"type":"School","names":"Erin Eggenberger & Miles Mercer","address":"Mercer Family\n3132 Dupont Avenue South\nMinneapolis, MN 55408","issues":"","notes":"Mercer","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":154,"type":"School","names":"Erika & Seth & Hugo & Vera","address":"Nelson Family\n3452 Holmes Ave\nMinneapolis, MN 55408","issues":"","notes":"Nelson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":155,"type":"School","names":"Jennifer, Bristol, Phoebe Pann","address":"Pann Family\n2529 Irving Ave S\nMinneapolis, MN 55405","issues":"Right names?","notes":"Pann","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":156,"type":"School","names":"Janet Parker","address":"Janet Parker\n5648 Dupont Ave S\nMinneapolis, MN 55419","issues":"","notes":"Parker","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":157,"type":"School","names":"Alexis and Tom Racciatti","address":"Racciatti Family\n1701 Irving Ave S\nMinneapolis, MN 55403","issues":"","notes":"Racciatti","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":158,"type":"School","names":"Kate & Tony & Iris Roos","address":"Roos Family\n2439 Bryant Avenue South\nMinneapolis, MN 55405","issues":"","notes":"Roos","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":159,"type":"School","names":"Amy Sanborn, Scott Sidney","address":"Sanborn Sidney Family\n2804 Irving Ave S\nMinneapolis, MN 55408","issues":"","notes":"Sanborn","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":160,"type":"School","names":"Daisy & Kyle Simpson","address":"Simpson Family\n2409 W 22nd St\nMinneapolis, MN 55405","issues":"","notes":"Simpson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":161,"type":"School","names":"Jenny & Brandon Small","address":"The Smalls\n2116 Oliver Ave S\nMinneapolis, MN 55405","issues":"","notes":"Small","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":162,"type":"School","names":"Katherin, Severin St Martin","address":"Dr. & Mr. St. Martin\n208 100th Street SE\nWatertown, MN 55388","issues":"","notes":"St Martin","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":163,"type":"School","names":"Will & Krista Stensrud","address":"Stensrud Family\n2019 Thomas Ave S\nMinneapolis, MN 55405","issues":"","notes":"Stensrud","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":164,"type":"School","names":"Brett, Caroline, Magnolia Thompson","address":"Thompson Family\n308 Sunnyridge Lane\nGolden Valley, MN 55422","issues":"","notes":"Thompson","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":165,"type":"School","names":"Cam, Emily, Evie, Jack, Silas Winton","address":"Pryor Winton Family\n1715 Logan Ave S\nMinneapolis, MN 55405","issues":"","notes":"Winton","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":166,"type":"School","names":"Erin & Matt Wise","address":"Wise Family\n3225 Humboldt Ave S\nMinneapolis, MN 55408","issues":"","notes":"Wise","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":167,"type":"School","names":"Hannah Ouellette","address":"Ouellette Family\n30614 147th St\nPrinceton, MN 55371","issues":"Wrong address","notes":"Wrong address","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":168,"type":"School","names":"Julie Young & Bob Walser","address":"Young Walser\n2308 Fremont Ave S\nMinneapolis, MN 55405","issues":"","notes":"Young","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":169,"type":"School","names":"Melissa Kell, Brett Hansen, Jojo, Violet","address":"Kell Hansen Family\n3208 Colfax Ave S\nMinneapolis, MN 55408","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":170,"type":"School","names":"Murphy Family","address":"Murphy Gustafson\n2804 Irving Ave S\nMinneapolis, MN 55408","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":171,"type":"School","names":"Aidan O'Connor & Drew Ashwood","address":"O'Connor Ashwood Family\n2401 Humboldt Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":172,"type":"School","names":"Blake, Alexander Rouhani","address":"Rouhani Family\n2713 Irving Ave S\nMinneapolis, MN 55408","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":173,"type":"School","names":"Rose Routhier","address":"Routhier Family\n2105 Newton Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":174,"type":"School","names":"Emily Sohn, Gabe Keller, Ben","address":"Sohn Keller Family\n1526 25th St W\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":175,"type":"School","names":"Olson, Karin, Carl, Charlotte","address":"The Olsons\n2301 Penn Ave S\nMinneapolis, MN 55405","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":176,"type":"Teacher","names":"Claire Thometz","address":"Claire Thometz\n438 Portland Ave Apt 5\nSt Paul, MN 55102","issues":"","notes":"","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":177,"type":"Yale","names":"Johnna & Steve Gluth","address":"Gluth Family\n1026 Richelieu Lane\nHouston, TX 77018","issues":"","notes":"Gluth","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":178,"type":"Yale","names":"Joef, Julia, Ranger, Pancake Hatton","address":"Hatton Family\n723 San Carlos Ave\nAlbany, CA 94706","issues":"","notes":"Hatton","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":179,"type":"Yale","names":"Anna, Daniel, Roman Heath","address":"Heath Family\n4393 Detroit Avenue\nOakland, CA 94619","issues":"","notes":"Heath","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":180,"type":"Yale","names":"Danielle Holly & Ben Healey — Caleb, Ara, Jonah","address":"Holly Healey Family\n516 Rugby Road\nBrooklyn, NY 11226","issues":"","notes":"Holly","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":181,"type":"Yale","names":"Jenny McColloch","address":"Jenny McColloch\n1333 N. Wolcott Ave #2\nChicago, IL 60622","issues":"","notes":"McColloch","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":182,"type":"Yale","names":"Sarah, Chris, Henry, Charlie Parker","address":"Parker Family\n6 Oak Street\nCambridge, MA 02139","issues":"","notes":"Parker","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":183,"type":"Yale","names":"Archana, Balaji, Akshay Venkataraman","address":"Venkataraman Family\n34 Knollwood Dr\nDover, MA 02030","issues":"","notes":"Venkataraman","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":184,"type":"Yale","names":"Ned & Martha Whitney","address":"Beagle & Ned Whitney\n110 Riverside Drive,12A\nNew York, NY 10024","issues":"","notes":"Whitney","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":185,"type":"Yale","names":"Victoria Escalle & John Whitney","address":"Escalle & Whitney\n8344 Stoneridge Ter\nBoulder, CO 80302-9324","issues":"","notes":"Whitney","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":186,"type":"Yale","names":"Wylie Youngberg Family","address":"Wylie Youngberg Family\n87 Marvel Road\nNew Haven, CT 06515-2117","issues":"","notes":"Wylie","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":187,"type":"Yale","names":"Jason Zahorchak & Sam Horng","address":"Zahorchak & Horng\n350 Cabrini Blvd, Apt 4E\nNew York City, NY 10040","issues":"","notes":"Zahorchak","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}},{"id":188,"type":"Yale","names":"Mary Zihal & Dena L. Miller M.D., Emma, Rachel","address":"Zihal Miller Family\n126 Cottage St\nNew Haven, CT 06511","issues":"","notes":"Zihal","cardLog":[],"includeInPrint":true,"lastUpdated":null,"cardHistory":{}}],"categories":["Blake","Boston","Cargill","EnerNOC","Friends","Germany","Greta Family","Greta Friends","Greta High School","Greta History","Hand deliver","International","Matt Family","Matt Friends","Matt History","Matt Work","Neighbors","Other","School","Teacher","Yale"],"lastExport":null};
 
     // ============================================
     // APP FUNCTIONS
@@ -841,6 +1041,7 @@
       
       document.getElementById('searchInput').addEventListener('input', renderEntries);
       document.getElementById('categoryFilter').addEventListener('change', renderEntries);
+      document.getElementById('currentYear').textContent = currentYear;
     }
 
     async function unlock() {
@@ -854,22 +1055,41 @@
       errorMsg.style.display = 'none';
 
       if (isNewSetup) {
-        // First time setup - encrypt and save initial data
         appData = INITIAL_DATA;
         currentPassword = password;
         await saveData();
         showApp();
       } else {
-        // Try to decrypt existing data
         try {
           const encrypted = await loadFromCloud();
           appData = await decrypt(encrypted, password);
+          // Migrate old data format if needed
+          migrateData();
           currentPassword = password;
           showApp();
         } catch (e) {
           showError('Incorrect password');
         }
       }
+    }
+
+    function migrateData() {
+      // Add new fields to existing entries if missing
+      appData.entries.forEach(entry => {
+        if (entry.includeInPrint === undefined) entry.includeInPrint = true;
+        if (!entry.lastUpdated) entry.lastUpdated = null;
+        if (!entry.cardHistory) entry.cardHistory = {};
+        // Migrate old cardLog to cardHistory if exists
+        if (entry.cardLog && entry.cardLog.length > 0 && Object.keys(entry.cardHistory).length === 0) {
+          entry.cardLog.forEach(log => {
+            const year = new Date(log.date).getFullYear();
+            if (!entry.cardHistory[year]) {
+              entry.cardHistory[year] = { sent: false, received: true, note: log.note || '' };
+            }
+          });
+        }
+      });
+      if (!appData.lastExport) appData.lastExport = null;
     }
 
     function showError(msg) {
@@ -883,6 +1103,8 @@
       document.getElementById('app').style.display = 'block';
       document.getElementById('passwordInput').value = '';
       populateCategories();
+      checkExportReminder();
+      renderRecentlyViewed();
       renderEntries();
     }
 
@@ -898,6 +1120,17 @@
       showStatus('Saved');
     }
 
+    function checkExportReminder() {
+      const alertEl = document.getElementById('exportAlert');
+      if (!appData.lastExport) {
+        alertEl.style.display = 'flex';
+        return;
+      }
+      const lastExport = new Date(appData.lastExport);
+      const monthsAgo = (Date.now() - lastExport.getTime()) / (1000 * 60 * 60 * 24 * 30);
+      alertEl.style.display = monthsAgo >= 8 ? 'flex' : 'none';
+    }
+
     function populateCategories() {
       const filter = document.getElementById('categoryFilter');
       const entryCategory = document.getElementById('entryCategory');
@@ -909,6 +1142,46 @@
         filter.innerHTML += `<option value="${cat}">${cat}</option>`;
         entryCategory.innerHTML += `<option value="${cat}">${cat}</option>`;
       });
+    }
+
+    function renderRecentlyViewed() {
+      const container = document.getElementById('recentlyViewed');
+      const chipsContainer = document.getElementById('recentChips');
+      
+      // Filter to only entries that still exist
+      const validRecent = recentlyViewed.filter(id => 
+        appData.entries.some(e => e.id === id)
+      ).slice(0, 5);
+      
+      if (validRecent.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+      
+      container.style.display = 'block';
+      chipsContainer.innerHTML = validRecent.map(id => {
+        const entry = appData.entries.find(e => e.id === id);
+        const shortName = entry.names.split(',')[0].split('&')[0].trim();
+        return `<span class="recent-chip" onclick="scrollToEntry(${id})">${escapeHtml(shortName)}</span>`;
+      }).join('');
+    }
+
+    function addToRecentlyViewed(id) {
+      recentlyViewed = recentlyViewed.filter(i => i !== id);
+      recentlyViewed.unshift(id);
+      recentlyViewed = recentlyViewed.slice(0, 10);
+      localStorage.setItem('addressBook_recent', JSON.stringify(recentlyViewed));
+      renderRecentlyViewed();
+    }
+
+    function scrollToEntry(id) {
+      const card = document.querySelector(`[data-entry-id="${id}"]`);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.boxShadow = '0 0 0 3px var(--gold)';
+        setTimeout(() => card.style.boxShadow = '', 1500);
+      }
+      addToRecentlyViewed(id);
     }
 
     function renderEntries() {
@@ -930,7 +1203,6 @@
         );
       }
       
-      // Sort by name
       filtered.sort((a, b) => a.names.localeCompare(b.names));
       
       document.getElementById('entryCount').textContent = filtered.length;
@@ -942,26 +1214,44 @@
         return;
       }
       
-      list.innerHTML = filtered.map(entry => `
-        <div class="entry-card">
+      list.innerHTML = filtered.map(entry => {
+        const cardStatus = getCardStatusForYear(entry, currentYear);
+        const lastUpdatedStr = entry.lastUpdated 
+          ? `Updated ${new Date(entry.lastUpdated).toLocaleDateString()}`
+          : '';
+        
+        return `
+        <div class="entry-card ${entry.includeInPrint ? '' : 'not-in-print'}" data-entry-id="${entry.id}">
           <div class="entry-header">
             <span class="entry-names">${escapeHtml(entry.names)}</span>
-            <span class="entry-category">${escapeHtml(entry.type)}</span>
+            <div class="entry-badges">
+              ${!entry.includeInPrint ? '<span class="no-print-badge">No print</span>' : ''}
+              <span class="entry-category">${escapeHtml(entry.type)}</span>
+            </div>
           </div>
-          <div class="entry-address">${escapeHtml(entry.address)}</div>
+          <div class="entry-address" onclick="copyForNav(${entry.id})" title="Tap to copy for navigation">${escapeHtml(entry.address)}</div>
           <div class="entry-meta">
             ${entry.issues ? `<span class="entry-issue">⚠ ${escapeHtml(entry.issues)}</span>` : ''}
             ${entry.notes ? `<span>📝 ${escapeHtml(entry.notes)}</span>` : ''}
-            ${entry.cardLog && entry.cardLog.length > 0 ? 
-              `<span class="card-log-indicator">✉ ${entry.cardLog.length} received</span>` : ''}
+            ${cardStatus}
           </div>
+          ${lastUpdatedStr ? `<div class="entry-updated">${lastUpdatedStr}</div>` : ''}
           <div class="entry-actions">
             <button class="btn" onclick="openEditModal(${entry.id})">Edit</button>
-            <button class="btn" onclick="openCardModal(${entry.id})">Log Card Received</button>
-            <button class="btn" onclick="copyAddress(${entry.id})">Copy Address</button>
+            <button class="btn" onclick="openCardModal(${entry.id})">${currentYear} Cards</button>
           </div>
         </div>
-      `).join('');
+      `}).join('');
+    }
+
+    function getCardStatusForYear(entry, year) {
+      const history = entry.cardHistory?.[year];
+      if (!history) return '<span class="card-indicator none">No cards logged</span>';
+      
+      let badges = [];
+      if (history.sent) badges.push('<span class="card-indicator sent">✓ Sent</span>');
+      if (history.received) badges.push('<span class="card-indicator received">✓ Received</span>');
+      return badges.join(' ') || '<span class="card-indicator none">No cards logged</span>';
     }
 
     function escapeHtml(text) {
@@ -971,6 +1261,23 @@
       return div.innerHTML;
     }
 
+    function copyForNav(id) {
+      const entry = appData.entries.find(e => e.id === id);
+      if (!entry || !entry.address) return;
+      
+      // Format for navigation: single line, comma-separated
+      const navAddress = entry.address
+        .split('\n')
+        .filter(line => line.trim())
+        .slice(-3) // Usually: street, city/state/zip — skip name line
+        .join(', ');
+      
+      navigator.clipboard.writeText(navAddress).then(() => {
+        showStatus('Address copied for navigation');
+      });
+      addToRecentlyViewed(id);
+    }
+
     function openAddModal() {
       document.getElementById('modalTitle').textContent = 'Add Entry';
       document.getElementById('editingId').value = '';
@@ -978,9 +1285,10 @@
       document.getElementById('entryAddress').value = '';
       document.getElementById('entryIssues').value = '';
       document.getElementById('entryNotes').value = '';
+      document.getElementById('entryIncludeInPrint').checked = true;
       document.getElementById('entryCategory').value = appData.categories[0] || '';
       document.getElementById('deleteBtn').style.display = 'none';
-      document.getElementById('cardLogSection').style.display = 'none';
+      document.getElementById('cardHistorySection').style.display = 'none';
       document.getElementById('entryModal').classList.add('active');
     }
 
@@ -988,32 +1296,52 @@
       const entry = appData.entries.find(e => e.id === id);
       if (!entry) return;
       
+      addToRecentlyViewed(id);
+      
       document.getElementById('modalTitle').textContent = 'Edit Entry';
       document.getElementById('editingId').value = id;
       document.getElementById('entryNames').value = entry.names;
       document.getElementById('entryAddress').value = entry.address;
       document.getElementById('entryIssues').value = entry.issues || '';
       document.getElementById('entryNotes').value = entry.notes || '';
+      document.getElementById('entryIncludeInPrint').checked = entry.includeInPrint !== false;
       document.getElementById('entryCategory').value = entry.type;
       document.getElementById('deleteBtn').style.display = 'inline-block';
       
-      // Show card log if exists
-      const cardLogSection = document.getElementById('cardLogSection');
-      const cardLogList = document.getElementById('cardLogList');
-      
-      if (entry.cardLog && entry.cardLog.length > 0) {
-        cardLogSection.style.display = 'block';
-        cardLogList.innerHTML = entry.cardLog.map(log => `
-          <div class="card-log-item">
-            <span class="card-log-date">${new Date(log.date).toLocaleDateString()}</span>
-            ${log.note ? `<span class="card-log-note"> — ${escapeHtml(log.note)}</span>` : ''}
-          </div>
-        `).join('');
-      } else {
-        cardLogSection.style.display = 'none';
-      }
+      // Render card history
+      renderCardHistory(entry);
       
       document.getElementById('entryModal').classList.add('active');
+    }
+
+    function renderCardHistory(entry) {
+      const section = document.getElementById('cardHistorySection');
+      const container = document.getElementById('cardHistoryRows');
+      
+      // Show last 3 years
+      const years = [currentYear, currentYear - 1, currentYear - 2];
+      
+      section.style.display = 'block';
+      container.innerHTML = years.map(year => {
+        const history = entry.cardHistory?.[year] || { sent: false, received: false, note: '' };
+        return `
+          <div class="card-year-row">
+            <span class="card-year-label">${year}</span>
+            <div class="card-year-toggles">
+              <label class="card-toggle">
+                <input type="checkbox" data-year="${year}" data-field="sent" ${history.sent ? 'checked' : ''}>
+                Sent
+              </label>
+              <label class="card-toggle">
+                <input type="checkbox" data-year="${year}" data-field="received" ${history.received ? 'checked' : ''}>
+                Received
+              </label>
+            </div>
+            <input type="text" class="card-note-input" data-year="${year}" data-field="note" 
+                   value="${escapeHtml(history.note || '')}" placeholder="Note">
+          </div>
+        `;
+      }).join('');
     }
 
     async function saveEntry() {
@@ -1024,7 +1352,9 @@
         address: document.getElementById('entryAddress').value.trim(),
         issues: document.getElementById('entryIssues').value.trim(),
         notes: document.getElementById('entryNotes').value.trim(),
-        cardLog: []
+        includeInPrint: document.getElementById('entryIncludeInPrint').checked,
+        lastUpdated: new Date().toISOString(),
+        cardHistory: {}
       };
       
       if (!entry.names) {
@@ -1032,17 +1362,41 @@
         return;
       }
       
+      // Collect card history from form
+      const historyInputs = document.querySelectorAll('#cardHistoryRows input');
+      historyInputs.forEach(input => {
+        const year = input.dataset.year;
+        const field = input.dataset.field;
+        if (!entry.cardHistory[year]) entry.cardHistory[year] = { sent: false, received: false, note: '' };
+        if (input.type === 'checkbox') {
+          entry.cardHistory[year][field] = input.checked;
+        } else {
+          entry.cardHistory[year][field] = input.value;
+        }
+      });
+      
+      // Clean up empty years
+      Object.keys(entry.cardHistory).forEach(year => {
+        const h = entry.cardHistory[year];
+        if (!h.sent && !h.received && !h.note) {
+          delete entry.cardHistory[year];
+        }
+      });
+      
       if (id) {
-        // Editing existing
         const existing = appData.entries.find(e => e.id === parseInt(id));
         if (existing) {
           entry.id = existing.id;
-          entry.cardLog = existing.cardLog || [];
+          // Preserve card history for years not shown in form
+          Object.keys(existing.cardHistory || {}).forEach(year => {
+            if (!entry.cardHistory[year]) {
+              entry.cardHistory[year] = existing.cardHistory[year];
+            }
+          });
           const index = appData.entries.indexOf(existing);
           appData.entries[index] = entry;
         }
       } else {
-        // New entry
         entry.id = Math.max(0, ...appData.entries.map(e => e.id)) + 1;
         appData.entries.push(entry);
       }
@@ -1067,29 +1421,37 @@
       const entry = appData.entries.find(e => e.id === id);
       if (!entry) return;
       
+      addToRecentlyViewed(id);
+      
       document.getElementById('cardEntryId').value = id;
       document.getElementById('cardEntryName').textContent = entry.names;
-      document.getElementById('cardNote').value = '';
+      
+      const history = entry.cardHistory?.[currentYear] || {};
+      document.getElementById('cardSent').checked = history.sent || false;
+      document.getElementById('cardReceived').checked = history.received || false;
+      document.getElementById('cardNote').value = history.note || '';
+      
       document.getElementById('cardModal').classList.add('active');
     }
 
-    async function logCardReceived() {
+    async function saveCardLog() {
       const id = parseInt(document.getElementById('cardEntryId').value);
-      const note = document.getElementById('cardNote').value.trim();
-      
       const entry = appData.entries.find(e => e.id === id);
       if (!entry) return;
       
-      if (!entry.cardLog) entry.cardLog = [];
-      entry.cardLog.push({
-        date: new Date().toISOString(),
-        note: note
-      });
+      if (!entry.cardHistory) entry.cardHistory = {};
+      entry.cardHistory[currentYear] = {
+        sent: document.getElementById('cardSent').checked,
+        received: document.getElementById('cardReceived').checked,
+        note: document.getElementById('cardNote').value.trim()
+      };
+      
+      entry.lastUpdated = new Date().toISOString();
       
       await saveData();
       closeModal('cardModal');
       renderEntries();
-      showStatus('Card logged');
+      showStatus('Card status updated');
     }
 
     function openCategoryModal() {
@@ -1118,25 +1480,35 @@
       showStatus('Category added');
     }
 
-    function copyAddress(id) {
-      const entry = appData.entries.find(e => e.id === id);
-      if (!entry) return;
-      
-      navigator.clipboard.writeText(entry.address).then(() => {
-        showStatus('Address copied');
-      });
-    }
-
     function exportCSV() {
-      const headers = ['Type', 'Names', 'Address', 'Issues', 'Notes', 'Cards Received'];
-      const rows = appData.entries.map(e => [
-        e.type,
-        e.names,
-        e.address.replace(/\n/g, ' | '),
-        e.issues || '',
-        e.notes || '',
-        e.cardLog ? e.cardLog.length : 0
-      ]);
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      const headers = ['Type', 'Names', 'Address', 'Issues', 'Notes', 'Include In Print', 'Last Updated', 'Card History'];
+      
+      const rows = appData.entries.map(e => {
+        // Format card history as readable string
+        const historyStr = Object.entries(e.cardHistory || {})
+          .sort((a, b) => b[0] - a[0])
+          .map(([year, h]) => {
+            let parts = [];
+            if (h.sent) parts.push('sent');
+            if (h.received) parts.push('received');
+            if (h.note) parts.push(`"${h.note}"`);
+            return parts.length ? `${year}: ${parts.join(', ')}` : '';
+          })
+          .filter(s => s)
+          .join('; ');
+        
+        return [
+          e.type,
+          e.names,
+          e.address.replace(/\n/g, ' | '),
+          e.issues || '',
+          e.notes || '',
+          e.includeInPrint ? 'Yes' : 'No',
+          e.lastUpdated ? new Date(e.lastUpdated).toLocaleDateString() : '',
+          historyStr
+        ];
+      });
       
       const csv = [headers, ...rows]
         .map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
@@ -1146,32 +1518,28 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `address-book-${new Date().toISOString().split('T')[0]}.csv`;
+      a.download = `address-book-${timestamp}.csv`;
       a.click();
       URL.revokeObjectURL(url);
       
+      // Update last export date
+      appData.lastExport = new Date().toISOString();
+      saveData();
+      
+      document.getElementById('exportAlert').style.display = 'none';
       showStatus('CSV exported');
     }
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-    }
-
-    function showStatus(message) {
-      const el = document.getElementById('statusMessage');
-      el.textContent = message;
-      el.classList.add('visible');
-      setTimeout(() => el.classList.remove('visible'), 2000);
-    }
-
     function printTable() {
-      // Sort entries by category, then by name
-      const sorted = [...appData.entries].sort((a, b) => {
-        if (a.type !== b.type) return a.type.localeCompare(b.type);
-        return a.names.localeCompare(b.names);
-      });
+      // Only print entries marked for printing
+      const toPrint = appData.entries
+        .filter(e => e.includeInPrint)
+        .sort((a, b) => {
+          if (a.type !== b.type) return a.type.localeCompare(b.type);
+          return a.names.localeCompare(b.names);
+        });
       
-      const rows = sorted.map(e => `
+      const rows = toPrint.map(e => `
         <tr>
           <td>${escapeHtml(e.type)}</td>
           <td>${escapeHtml(e.names)}</td>
@@ -1182,8 +1550,8 @@
       
       const printArea = document.getElementById('printArea');
       printArea.innerHTML = `
-        <div class="print-title">Address Book</div>
-        <div class="print-date">Printed ${new Date().toLocaleDateString()} · ${appData.entries.length} entries</div>
+        <div class="print-title">Address Book — Holiday Card List</div>
+        <div class="print-date">Printed ${new Date().toLocaleDateString()} · ${toPrint.length} entries</div>
         <table class="print-table">
           <thead>
             <tr>
@@ -1202,6 +1570,17 @@
       printArea.style.display = 'block';
       window.print();
       printArea.style.display = 'none';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    function showStatus(message) {
+      const el = document.getElementById('statusMessage');
+      el.textContent = message;
+      el.classList.add('visible');
+      setTimeout(() => el.classList.remove('visible'), 2000);
     }
 
     // Initialize
